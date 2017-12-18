@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/umap_crm_android/!svn/ver/1911/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener
+END
+OnMsgReceipt.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/OnMsgReceipt.java
+END
+OnNewMessageListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/OnNewMessageListener.java
+END
+OverallMsgListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/OverallMsgListener.java
+END
+CrmBaseListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/CrmBaseListener.java
+END
+OnItemClickListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/OnItemClickListener.java
+END
+OnIMConnectionListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/umap_crm_android/!svn/ver/1860/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/OnIMConnectionListener.java
+END
+MsgFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/umap_crm_android/!svn/ver/1911/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/listener/MsgFilter.java
+END

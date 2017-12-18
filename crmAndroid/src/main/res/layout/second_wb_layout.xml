@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/me_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_layout" />
+    <com.paic.crm.widget.PullToRefreshLayout
+        android:id="@+id/second_wb_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.paic.crm.widget.CustomWebView
+            android:id="@+id/wb_second"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.paic.crm.widget.PullToRefreshLayout>
+</LinearLayout>

@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'Pinganucm001'
+            keyPassword 'Pinganucm001'
+            storeFile file('./pingan_ucm@sina.com.jks')
+            storePassword 'Pinganucm001'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    android {
+        useLibrary 'org.apache.http.legacy'
+    }
+    defaultConfig {
+        applicationId "com.paic.crm.android"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.12"
+    }
+    buildTypes {
+        release {
+            buildConfigField('String', 'ENV', '"PRD"')
+            manifestPlaceholders = [api_key   : 'B58F96EA47348B562000152A3006186A', td_app_id: 'B58F96EA47348B562000152A3006186A',
+                                    channel_id: 'prd']
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
+            debuggable = true;
+        }
+        debug {
+            manifestPlaceholders = [api_key   : 'E3F034AC6569D9102000152A3006187A', td_app_id: 'E3F034AC6569D9102000152A3006187A',
+                                    channel_id: 'test']
+            buildConfigField('String', 'ENV', '"STG"')
+            debuggable = true;
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile files('libs/volly-1.0.11.jar')
+    compile files('libs/glide-3.6.1.jar')
+    compile files('libs/commons-codec-1.10.jar')
+    compile files('libs/jzlib-1.0.7.jar')
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/pabasicdatalibrary.jar')
+    compile files('libs/locSDK_6.23.jar')
+    compile files('libs/tdsdk-all.jar')
+    compile files('libs/baidumapapi_v3_5_0.jar')
+    compile 'com.squareup.wire:wire-runtime:2.1.1'
+    compile(name: 'crmimlib', ext: 'aar')
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile files('libs/PAIMkit-2.1.4.jar')
+    compile 'com.squareup.okio:okio:1.13.0'
+}

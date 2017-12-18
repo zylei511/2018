@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/drawable/crm_sdk_progress_drawable.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/drawable/crm_sdk_progress_drawable.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/drawable/crm_sdk_dialog_unpressed_drawable.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/drawable/crm_sdk_dialog_unpressed_drawable.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/drawable/crm_sdk_face_delete_select.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/drawable/crm_sdk_face_delete_select.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/drawable/crm_sdk_dialog_selector_drawable.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/drawable/crm_sdk_dialog_selector_drawable.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/drawable/crm_sdk_dialog_pressed_drawable.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/drawable/crm_sdk_dialog_pressed_drawable.xml"
+    }
+]

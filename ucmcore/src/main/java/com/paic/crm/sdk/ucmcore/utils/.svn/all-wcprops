@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/umap_crm_android/!svn/ver/2005/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils
+END
+ThemeUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/ThemeUtil.java
+END
+PromptDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/PromptDialog.java
+END
+HTTPS.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/HTTPS.java
+END
+ActivityCollector.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/umap_crm_android/!svn/ver/2005/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/ActivityCollector.java
+END
+StringUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/StringUtil.java
+END
+CycleQueue.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/CycleQueue.java
+END
+Config.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/Config.java
+END
+KeyboardChangeHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/KeyboardChangeHelper.java
+END
+CommonUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/CommonUtils.java
+END
+LocalAlubmMultiTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/LocalAlubmMultiTask.java
+END
+CrmGetDbtoSdcard.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/CrmGetDbtoSdcard.java
+END
+CRMLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/CRMLog.java
+END
+SpfUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/SpfUtil.java
+END
+SoundUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/umap_crm_android/!svn/ver/1983/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/SoundUtil.java
+END
+VibratorUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/umap_crm_android/!svn/ver/1904/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/VibratorUtil.java
+END
+DialogFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/DialogFactory.java
+END
+ToastUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/ToastUtil.java
+END
+CrmPermissionHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/CrmPermissionHelper.java
+END

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/anim/crm_sdk_fade_out_center.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/anim/crm_sdk_fade_out_center.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/anim/crm_sdk_pop_enter_anim.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/anim/crm_sdk_pop_enter_anim.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/anim/crm_sdk_slide_out_bottom.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/anim/crm_sdk_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/anim/crm_sdk_slide_in_bottom.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/anim/crm_sdk_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/anim/crm_sdk_pop_exit_anim.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/anim/crm_sdk_pop_exit_anim.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/res/merged/androidTest/debug/anim/crm_sdk_fade_in_center.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/ucmcore/build/intermediates/bundles/debug/res/anim/crm_sdk_fade_in_center.xml"
+    }
+]

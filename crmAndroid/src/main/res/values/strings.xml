@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">移动CRM</string>
+    <string name="main_title">main_title</string>
+    <string name="txt_converson">会话</string>
+    <string name="txt_work_bench">工作台</string>
+    <string name="txt_contacts">联系人</string>
+    <string name="txt_weixun">微讯</string>
+    <string name="txt_me">我</string>
+    <string name="crm_db_name">crm_db.db</string>
+    <string name="crm_db_version">1</string>
+    <string name="txt_login">立即登录</string>
+    <string name="image_discription">图片描述</string>
+    <string name="chat_content">正在加载...</string>
+    <string name="chat_date">21:01</string>
+    <string name="text_digits">1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
+    <string name="txt_status">状 态</string>
+    <string name="phone_status">电话状态</string>
+    <string name="txt_name">姓 名</string>
+    <string name="txt_sex">姓 别</string>
+    <string name="txt_phone">手 机</string>
+    <string name="txt_feed_back">反 馈</string>
+    <string name="settings">设置</string>
+
+    <string name="txt_exit">退出登录</string>
+    <string name="txt_customer_info">客户信息</string>
+    <string name="txt_msg_history">聊天记录</string>
+    <string name="txt_msg_finish_chat">发送满意度</string>
+    <string name="txt_msg_translate_chat">转接</string>
+    <string name="txt_msg_hit">请输入文字</string>
+
+    <string name="hint_text">请输入UM账号/域账号</string>
+    <string name="hint_text_pass">密码</string>
+    <string name="txt_email">邮 箱</string>
+    <string name="shock_switch">消息震动</string>
+    <string name="sound_switch">消息声</string>
+    <string name="version">检查更新</string>
+    <string name="notification_normal">%1$s:%2$s</string>
+    <string name="notification_one">%1$s发来%2$d条消息</string>
+    <string name="notification_more">%1$s个联系人发来%2$d条消息</string>
+    <string name="notification_image">发来一张图片</string>
+    <string name="notification_video">发来一段视频</string>
+    <string name="notification_audio">发来一条语音消息</string>
+    <string name="notification_vcard">发来一张名片</string>
+    <string name="notification_location">发来一条位置信息</string>
+    <string name="notification_title">移动销售助手</string>
+    <string name="txt_submit">提交</string>
+    <string name="txt_cancel">取消</string>
+    <string name="phone_modify_title">修改号码</string>
+    <string name="txt_codes">验证码</string>
+    <string name="txt_special_note">＊特别提示： 号码在使用移动CRM平台中，拨通后不会产生任何费用</string>
+
+    <string name="refresh">刷新</string>
+    <string name="check_in">签入</string>
+    <string name="has_checked_in_kzkf">已签到</string>
+    <string name="has_checked_out_kzkf">未签到</string>
+    <string name="check_state_kzkf">签入状态</string>
+    <string name="check_status">签入/签出</string>
+    <string name="check_out">签出</string>
+    <string name="search">搜索</string>
+    <string name="no_searched">未检索出联系人</string>
+
+    <string name="online">在线</string>
+    <string name="offline">离线</string>
+
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+
+    <string name="program_call_failed">程序调用失败</string>
+    <string name="program_call_success">程序调用成功</string>
+    <string name="status_checking_in">签到中</string>
+    <string name="status_check_in_success">签入成功</string>
+    <string name="status_check_in_fail">签入失败</string>
+    <string name="status_sending">发送中</string>
+    <string name="status_transfering">转接中</string>
+    <string name="chat_has_ended">当前会话已关闭，无法输入</string>
+    <string name="invaild_conversation_cannot_transfer">无效会话，无法转接</string>
+    <string name="invaild_conversation_cannot_ended">无效会话，无法发送满意度</string>
+
+
+    <item type="id" name="id_cpystr_tag"/>
+    <item type="id" name="id_root_tag"/>
+</resources>

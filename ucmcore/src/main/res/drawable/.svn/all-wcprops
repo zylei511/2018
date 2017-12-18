@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/drawable
+END
+crm_sdk_face_delete_select.xml
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/drawable/crm_sdk_face_delete_select.xml
+END
+crm_sdk_dialog_selector_drawable.xml
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/drawable/crm_sdk_dialog_selector_drawable.xml
+END
+crm_sdk_dialog_pressed_drawable.xml
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/drawable/crm_sdk_dialog_pressed_drawable.xml
+END
+crm_sdk_progress_drawable.xml
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/drawable/crm_sdk_progress_drawable.xml
+END
+crm_sdk_dialog_unpressed_drawable.xml
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/drawable/crm_sdk_dialog_unpressed_drawable.xml
+END

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="transparent_background">#00000000</drawable>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorLoginEt">#aaaaaa</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_me">#eeeeee</color>
+    <color name="color_me_txt">#999999</color>
+    <color name="color_login_txt">#cccccc</color>
+    <color name="color_me_txt_status">#70777E</color>
+    <color name="color_line">#d7dbe5</color>
+    <color name="color_divider">#e7ebf6</color>
+    <color name="color_wide_line">#e8ecf0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="color_bg">#e8ecf0</color>
+    <!-- 登陆 -->
+    <color name="login_white">#fffffe</color>
+    <!-- 所有背景颜色 -->
+    <color name="content_bg">#eeecdd</color>
+    <color name="select_photo_bg">#66000000</color>
+    <color name="select_photo_title_bg">#cc000000</color>
+    <!-- 公众账号不同背景色 -->
+    <color name="list_normal_bg">#e7e6ec</color>
+    <color name="list_press_bg1">#55d1cd</color>
+    <color name="list_press_bg2">#5ea6d5</color>
+    <color name="list_press_bg3">#f4975f</color>
+    <color name="list_press_bg4">#e1ca6d</color>
+    <color name="list_press_bg5">#f197a2</color>
+    <color name="list_press_bg">#d8d7dc</color>
+    <color name="list_text_press">#403f3d</color>
+    <color name="list_text_normal">#6e6e6e</color>
+    <color name="list_text_color">#676564</color>
+
+    <!-- 公共字体颜色 -->
+    <color name="font_corlor_black">#4d4d4c</color>
+    <color name="font_corlor_gray">#7c7c7c</color>
+
+    <!-- 底部导航条文字颜色 -->
+    <color name="bottom_bar_text_color_off">#808080</color>
+    <color name="title_font_color">#E1FDFE</color>
+    <color name="light_red">#ff6600</color>
+    <!-- 字母导航面板颜色 -->
+    <color name="right_sidebar_color">#40000000</color>
+    <!-- listview分割线颜色 -->
+    <color name="lv_divider">#5ea7d5</color>
+    <color name="color_me_txt_codes">#9AA989</color>
+    <!-- 举报分割线 -->
+    <color name="ask_divider">#c0bfc4</color>
+    <color name="phone_contact_divider">#d5d4d2</color>
+    <color name="added_text">#e2e0de</color>
+    <color name="line_divider">#d9d9d9</color>
+
+    <!-- 圆角边框颜色 -->
+    <color name="radius_line_bg">#e2e0de</color>
+    <!-- 搜索框底部细线颜色 -->
+    <color name="search_line_bg">#b3b3b3</color>
+    <!-- 手机通讯录列表item点击背景 -->
+    <color name="phone_contact_item_bg">#f8f8f8</color>
+    <color name="add_pressed">#ca5218</color>
+
+    <!-- moren end -->
+    <color name="friend_cirlce_yellow">#f56a2c</color>
+    <color name="friend_cirlce_nickname">#020202</color>
+    <color name="friend_cirlce_content_textcorlor">#827f7e</color>
+
+    <!-- 朋友圈虚线 -->
+    <color name="friend_cirlce_line">#dbdbdb</color>
+    <!-- 朋友圈背景颜色 -->
+    <color name="friend_cirlce_bg">#e0e0e0</color>
+    <!-- 朋友圈时间字体颜色 -->
+    <color name="friend_cirlce_font_time">#858585</color>
+    <!-- 朋友圈时间字体颜色 -->
+    <color name="friend_cirlce_font_delete">#7d97d2</color>
+    <!-- 朋友圈时间字体颜色 -->
+    <color name="friend_cirlce_font_delete_s">#505b75 </color>
+    <!-- 朋友圈内容字体颜色 -->
+    <color name="friend_circle_font_content">#000000</color>
+    <!-- 朋友圈提醒谁字体颜色 -->
+    <color name="friend_circle_font_reminder">#adadad</color>
+    <!-- 朋友圈位置字体颜色 -->
+    <color name="friend_circle_font_location">#adadad</color>
+    <!-- 朋友圈昵称字体颜色 -->
+    <color name="friend_cirlce_font_nickname">#ff6600</color>
+    <!-- 朋友圈评论字体颜色 -->
+    <color name="friend_cirlce_font_writeback_content">#30302f</color>
+    <!-- 朋友圈评论面板颜色 -->
+    <color name="friend_cirlce_writeback_bg">#f3f3f3</color>
+    <!-- 朋友圈图片选择背景颜色 -->
+    <color name="friend_cirlce_photo_select_bg">#ff6604</color>
+    <!-- 朋友圈评论面板颜色 -->
+    <color name="friend_cirlce_writeback_bg_s">#c9ced9</color>
+    <color name="friend_cirlce_background">#EFEFF6</color>
+    <!-- friend start -->
+
+
+    <!-- friend end -->
+
+
+    <!-- zxing color start -->
+
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <!-- zxing color end -->
+
+
+    <!-- 新的朋友界面按钮文字颜色 -->
+    <color name="new_friend_add_and_yanzheng_text">#DB6237</color>
+    <color name="new_friend_added_and_wait_text">#827F7E</color>
+    <color name="new_friend_validate_text">#FC6620</color>
+
+    <!-- 消息列表界面文本颜色 -->
+    <color name="message_list_text">#92918c</color>
+    <color name="message_list_time">#bbbbbb</color>
+    <color name="message_list_line">#d5d4d2</color>
+    <!-- 消息列表item奇数行背景颜色 -->
+    <color name="message_list_item_odd_bg">#EEECE7</color>
+    <!-- 消息列表item偶数行背景颜色 -->
+    <color name="message_list_item_even_bg">#F3F2EE</color>
+    <!-- 消息列表item隐藏置顶按钮背景颜色 -->
+    <color name="message_list_item_top_bg">#cdcfd6</color>
+    <color name="message_list_item_top_debg">#cdcfd6</color>
+
+    <!-- 消息列表item隐藏置顶按钮删除背景颜色 -->
+    <color name="message_list_item_del_bg">#fc5e61</color>
+    <color name="message_list_item_del_debg">#fc5e61</color>
+
+    <!-- 消息列表item置顶背景颜色 -->
+    <color name="message_list_top_bg">#FFF6EE</color>
+    <color name="message_list_lasttime_bg">#FBFAF3</color>
+
+    <!-- 聊天界面底部隐藏功能区背景颜色 -->
+    <color name="chat_bottom_function_bg">#f2f0f0</color>
+
+    <!-- 设置界面相关 -->
+    <!-- 设置界面分割线颜色 -->
+    <color name="set_list_divider">#ffdddad4</color>
+    <!-- 设置界面list北京颜色 -->
+    <color name="set_list_bg">#fffaf9f8</color>
+    <color name="set_bt_bg">#33445533</color>
+
+    <!-- 进度条对话框颜色 -->
+    <color name="sc_transparent_background">#00111111</color>
+
+    <!-- 所有底部弹出框 -->
+    <color name="cut_off_rule">#8e9194</color>
+    <color name="pup_text_color">#838383</color>
+    <color name="pup_cancel_text">#1571fb</color>
+    <color name="pupWindowview_bt_red">#ffff0000</color>
+    <color name="pupWindowview_bt_white">#aafcfcfc</color>
+
+    <!-- 群界面相关颜色 -->
+    <color name="group_content_type_title_bg">#E8E8E9</color>
+    <color name="group_content_type_title_text">#999794</color>
+    <!-- 二维码相关颜色 -->
+    <color name="personal_barcode_text">#7D7D7D</color>
+
+    <!-- 聊天界面item相关颜色 -->
+    <color name="group_chat_item_nickname">#8E8A85</color>
+    <color name="message_public_item">#db6237</color>
+
+    <!-- 公共字体 深灰色 -->
+
+    <color name="darker_gray_text">#9e9e9d</color>
+    <!-- 80%黑 -->
+    <color name="darker_gray_80_text">#585858</color>
+    <!-- 灰色 -->
+    <color name="gray">#827f7e</color>
+
+    <!-- 公共字体 浅灰色 -->
+    <color name="msg_send_button_down">#ababab</color>
+    <color name="gray_simple">#e5e5e5</color>
+    <color name="gray_mood">#dedddd</color>
+    <!-- 公共字体 黑色 -->
+    <color name="black_text">#585858</color>
+    <!-- 公共字体 浅红色 -->
+    <color name="red_text">#ff8c3f</color>
+    <!-- 公共字体 深红色 -->
+    <color name="darker_red_text">#E74C3C</color>
+    <!-- 公共 红色 -->
+    <color name="red_bg">#FF0000</color>
+    <!-- 公共字体纯白色 -->
+    <color name="common_white">@android:color/white</color>
+    <!-- 公共字体纯红色 -->
+    <color name="common_red">#ff6049</color>
+    <!-- title右上角的橙色字体正常颜色 -->
+    <color name="typeface_orange">#f87c32</color>
+    <color name="title_right_orange">#ffffff</color>
+    <!-- title右上角的橙色字体点击颜色 -->
+    <color name="title_right_orange_press">#999999</color>
+    <!-- 公共背景色 -->
+    <color name="common_content_bg">#EFEFEF</color>
+    <!-- 公共橙色底色 -->
+    <color name="common_orange">#f87c32</color>
+    <!-- 公共灰色色底色 -->
+    <color name="common_huise">#f87c32</color>
+    <!-- 公共灰色 -->
+    <color name="gray_bg">#DEDDDD</color>
+    <!-- 聊天webview消息webview背景色 -->
+    <color name="webview_bg">#F4F4F4</color>
+    <color name="rectangle_bg_normal">@android:color/white</color>
+    <color name="rectangle_bg_pressed">#D9D9D9</color>
+    <color name="video_item_bg">#0C0C0F</color>
+    <color name="dynamic_dark_bg">#b0afac</color>
+    <!-- 透明图片 -->
+    <drawable name="transparent">@android:color/transparent</drawable>
+    <!-- 半透明黑色图片 -->
+    <drawable name="transparent_black_half">#5f000000</drawable>
+    <!-- 活动界面顶部tab高亮颜色 -->
+    <color name="activities_title_high_light">#B4CA65</color>
+    <color name="friend_share_bg">#F0F0F0</color>
+    <!-- 圆角边框颜色 -->
+
+    <!-- 未读消息快速定位文字颜色 -->
+    <color name="unread_msg_text">#00b2f4</color>
+
+    <!-- 活动列表item灰色 -->
+    <color name="activities_list_item_gray">#9d9d9d</color>
+    <color name="activities_detail_title">#515151</color>
+    <color name="activities_round_line_bg">#CFCFCF</color>
+    <color name="activities_bg">#E6E6E6</color>
+    <color name="actitities_my_text">#626262</color>
+    <!-- 聊天长按弹出框的单个菜单的背景 -->
+    <color name="chat_long_click_item_bg">#333333</color>
+    <!-- 公众号分享 -->
+    <color name="share_window_bg">#efefef</color>
+    <color name="public_share_text">#666666</color>
+    <!-- 寻觅界面 -->
+    <color name="seek_bg">#eaeaea</color>
+    <color name="seek_bg2">#fbfbfb</color>
+    <color name="seek_line">#c7c7c7</color>
+    <color name="seek_text_title">#4b4b4b</color>
+    <color name="seek_text_othertitle">#272727</color>
+    <color name="seek_text_content">#898989</color>
+    <color name="regitster_enabled">#f9bfbe</color>
+    <color name="regitster_enabled_true">#ffffff</color>
+    <color name="life_single_share_p">#c2c2c2</color>
+    <!-- 找平安 -->
+    <color name="find_pa_bg">#c4c4c4</color>
+    <color name="find_pa_app_n">#fbfbfb</color>
+    <color name="find_pa_app_p">#f2efef</color>
+    <color name="find_pa_creditcard_n">#ff9b0d</color>
+    <color name="find_pa_creditcard_p">#f38f00</color>
+    <color name="find_pa_bank_n">#ffc90d</color>
+    <color name="find_pa_bank_p">#f4bf09</color>
+    <color name="find_pa_life_n">#70cf45</color>
+    <color name="find_pa_life_p">#61c145</color>
+    <color name="find_pa_old_age_n">#2bc994</color>
+    <color name="find_pa_old_age_p">#21c08a</color>
+    <color name="find_pa_car_report_n">#2b9ac8</color>
+    <color name="find_pa_car_report_p">#208fba</color>
+    <color name="find_pa_car_property_n">#00ab9b</color>
+    <color name="find_pa_car_property_p">#009a8c</color>
+    <color name="find_pa_securities_n">#e3503c</color>
+    <color name="find_pa_securities_p">#d9412c</color>
+    <color name="chat_add_friend">#4eaf49</color>
+    <color name="ask_my_question_line_bg">#c2c1c6</color>
+    <color name="ask_my_question_item_hint_bg">#7c7c7c</color>
+    <color name="ask_my_question_bg">#ededf4</color>
+    <color name="chat_session_search_text">#ff6600</color>
+    <color name="translucent">#aa000000</color>
+
+    <!-- 新改版需求 -->
+    <color name="neterror_bg">#F7B413</color>
+    <!-- 新版登陆注册的需求 -->
+    <color name="loginEdit">#000000</color>
+    <color name="loginEditHint">#e7e9ea</color>
+
+    <!-- 消息会话列表 -->
+    <!-- 名称颜色 -->
+    <color name="message_list_name_color">#403f3d</color>
+
+    <!-- 分割线颜色 -->
+    <color name="divider_line_color">#d9d9d9</color>
+    <color name="service_head_text">#303030</color>
+    <color name="service_bg">#eeeeee</color>
+    <color name="search_bg_color">#e7e7e7</color>
+    <color name="search_hint_color">#a3a3a3</color>
+    <color name="service_gray">#919191</color>
+    <color name="service_blue">#56b4f0</color>
+    <color name="service_red">#ff6600</color>
+    <color name="dialog_btn_text_color">#646464</color>
+    <color name="dialog_title_text_color">#ff6600</color>
+
+    <color name="chat_bottom_background">#f9f9f9</color>
+    <color name="expression_divider">#b1afb0</color>
+    <color name="eidt_hint">#d9dcde</color>
+    <color name="creditcard_mine_devider">#dbdbda</color>
+
+    <!-- 信用卡模块 -->
+    <color name="creditcard_tab_target_color">#ff911c</color>
+    <color name="creditcard_tab_init_color">#888888</color>
+    <color name="creditcard_interact_moreans_color">#868ca0</color>
+    <color name="creditcard_interact_ans_color">#737373</color>
+    <color name="creditcard_mine_grid_divider">#e8e8e7</color>
+
+    <!--覆盖颜色-->
+    <color name="bgColor_overlay">#60000000</color>
+    <!--窗口背景颜色-->
+    <color name="bgColor_alertview_alert">#f8f8f8</color>
+    <color name="bgColor_alertview_alert_start">#f0f0f0</color>
+    <!--标题颜色-->
+    <color name="textColor_alert_title">#000000</color>
+    <color name="textColor_actionsheet_title">#8f8f8f</color>
+    <!--消息颜色-->
+    <color name="textColor_alert_msg">#000000</color>
+    <color name="textColor_actionsheet_msg">#8f8f8f</color>
+    <!--线条颜色-->
+    <color name="bgColor_divier">#d7d7db</color>
+    <!--取消按钮颜色-->
+    <color name="textColor_alert_button_cancel">#007aff</color>
+    <!--高亮按钮颜色-->
+    <color name="textColor_alert_button_destructive">#ff3b30</color>
+    <!--普通按钮文字颜色-->
+    <color name="textColor_alert_button_others">#007aff</color>
+    <!--点击颜色-->
+    <color name="bgColor_alert_button_press">#EAEAEA</color>
+    <!--actionsheet模式的取消按钮背景颜色-->
+    <color name="bgColor_actionsheet_cancel_nor">#ffffff</color>
+    <color name="color_theme">#29B9AC</color>
+</resources>

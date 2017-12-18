@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7.0"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chat_room_date"
+            android:layout_width="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/date_bc"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/chat_date"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            >
+
+            <ImageView
+                android:id="@+id/chat_room_headview"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="15dp"
+                android:contentDescription="@string/image_discription"
+                android:src="@drawable/kf" />
+
+            <RelativeLayout
+                android:id="@+id/txt_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/chat_room_headview"
+                android:gravity="center">
+
+
+                <TextView
+                    android:id="@+id/chat_room_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="250dp"
+                    android:singleLine="false"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/chatfrom_bg_out"
+                    android:text="正在吃饭"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_pic"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_launcher"
+                    android:visibility="gone" />
+
+                <include
+                    layout="@layout/mixview_layout"
+                    />
+            </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/self_progress_bar"
+                style="?android:progressBarStyleSmall"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_5dp"
+                android:layout_toLeftOf="@+id/txt_layout"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/send_fail_btn"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_5dp"
+                android:src="@drawable/icon_send_fail"
+                android:layout_toLeftOf="@+id/txt_layout"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/umap_crm_android/!svn/ver/2005/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore
+END
+proguard-rules.pro
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/proguard-rules.pro
+END
+build.gradle
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/build.gradle
+END

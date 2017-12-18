@@ -1,0 +1,45 @@
+-optimizationpasses 5
+-dontwarn com.pingan.paimkit.connect.processor.**
+-dontwarn com.baidu.platform.comapi.map.**
+-dontwarn javax.naming.**
+-keep class com.paic.crm.entity.* {*;}
+-keep class com.paic.crm..** {*;}
+-keep class com.pingan.** {*;}
+-keep class org.apache.commons.codec** {*;}
+-keep class * extends java.lang.annotation.Annotation {*;}
+-keep class com.j256.ormlite.** {*;}
+-keep class com.pingan.core.data.**{*;}
+-keep class com.tendcloud.tenddata.**{*;}
+-keep class com.tencent.mm.sdk.** {
+   *;
+}
+#-keep public class com.tendcloud.tenddata.** { public protected *;}
+-keepclassmembers class com.paic.crm.ui.WebViewActivity {
+  public *;
+}
+-keepclassmembers class com.paic.crm.ui.SecondWebviewActivity {
+  public *;
+}
+-keepclassmembers class com.paic.crm.fragment.ContactsFragment {
+  public *;
+}
+-keepclassmembers class com.paic.crm.fragment.WeixunFragment {
+  public *;
+}
+-keepclassmembers class com.paic.crm.fragment.WorkbenchFragment {
+  public *;
+}
+
+-keepattributes *Annotation*
+-keepattributes *JavascriptInterface*
+##---------------Begin: proguard configuration for Gson  ----------
+# Gson uses generic type information stored in a class file when working with fields. Proguard
+# removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# Gson specific classes
+#-keep class sun.misc.Unsafe { *; }
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+# -keep class mypersonalclass.data.model.** { *; }

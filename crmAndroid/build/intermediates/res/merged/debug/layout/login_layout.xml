@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.paic.crm.widget.ScrollLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f7fa"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo_crm"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="80dp"
+        />
+
+    <com.paic.crm.widget.XEditText
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/login_bc"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorLoginEt"
+                android:drawableLeft="@drawable/icon_img_username"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:drawablePadding="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="@dimen/margin_bottom_15dp"
+                android:singleLine="true"
+                android:hint="@string/hint_text"
+                android:textSize="@dimen/txt_16sp"
+                android:gravity="center_vertical"
+                android:textColorHint="@color/color_login_txt"
+                />
+
+
+            <com.paic.crm.widget.XEditText
+                android:id="@+id/passWord"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/login_bc"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorLoginEt"
+                android:inputType="textPassword"
+                android:digits="@string/text_digits"
+                android:password="true"
+                android:paddingLeft="@dimen/margin_left_10dp"
+                android:paddingRight="@dimen/margin_right_10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:drawableLeft="@drawable/icon_password"
+                android:drawableRight="@drawable/icon_show"
+                android:drawablePadding="10dp"
+                android:hint="@string/hint_text_pass"
+                android:textSize="@dimen/txt_16sp"
+                android:gravity="center_vertical"
+                android:textColorHint="@color/color_login_txt"
+                />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_login_seleter"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/txt_login"
+            style="?borderlessButtonStyle"
+            />
+
+</com.paic.crm.widget.ScrollLayout>

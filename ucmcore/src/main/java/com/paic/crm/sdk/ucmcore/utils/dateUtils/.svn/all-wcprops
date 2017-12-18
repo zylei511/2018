@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/dateUtils
+END
+DateFormatManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/dateUtils/DateFormatManager.java
+END
+DateFormatUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/dateUtils/DateFormatUtil.java
+END
+DialogFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/utils/dateUtils/DialogFactory.java
+END

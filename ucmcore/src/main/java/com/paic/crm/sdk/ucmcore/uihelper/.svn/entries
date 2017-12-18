@@ -1,0 +1,84 @@
+10
+
+dir
+0
+http://ex-zhangyuelei001@svn-app.paic.com.cn:80/svn/umap_crm_android/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/java/com/paic/crm/sdk/ucmcore/uihelper
+http://ex-zhangyuelei001@svn-app.paic.com.cn:80/svn/umap_crm_android
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9a5e6f07-c97e-4837-9aca-f13806c647fc
+
+AbstractHelper.java
+file
+
+
+
+add
+
+ActiveInterface.java
+file
+
+
+
+add
+
+BaseHelper.java
+file
+
+
+
+add
+
+ChatAddHelper.java
+file
+
+
+
+add
+
+FaceHelper.java
+file
+
+
+
+add
+
+adapter
+dir
+
+
+
+add
+
+entity
+dir
+
+
+
+add
+
+faceUtil
+dir
+
+
+
+add
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:orientation="vertical"
+			  android:layout_width="match_parent"
+			  android:background="@drawable/crm_sdk_dialog_unpressed_drawable"
+			  android:layout_height="match_parent">
+	<TextView
+		android:id="@+id/crm_sdk_prompt_title"
+		android:layout_width="match_parent"
+		android:background="@color/crm_sdk_white"
+		android:gravity="center"
+		android:text="title"
+		android:textSize="17sp"
+		android:textColor="@color/crm_sdk_black_text"
+		android:layout_height="50dp"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:orientation="horizontal"
+		android:weightSum="2">
+		<TextView
+			android:id="@+id/crm_sdk_btn_positive"
+			android:layout_width="0dp"
+			android:text="设置"
+			android:textColor="@color/crm_sdk_black_text"
+			android:gravity="center"
+			android:layout_height="match_parent"
+			android:background="@drawable/crm_sdk_dialog_selector_drawable"
+			android:layout_weight="1"/>
+
+		<TextView
+			android:id="@+id/crm_sdk_btn_negative"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:text="取消"
+			android:background="@drawable/crm_sdk_dialog_selector_drawable"
+			android:gravity="center"
+			android:textColor="@color/crm_sdk_black_text"
+			android:layout_weight="1"/>
+	</LinearLayout>
+</LinearLayout>

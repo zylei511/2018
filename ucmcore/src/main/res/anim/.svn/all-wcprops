@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim
+END
+crm_sdk_pop_enter_anim.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim/crm_sdk_pop_enter_anim.xml
+END
+crm_sdk_fade_in_center.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim/crm_sdk_fade_in_center.xml
+END
+crm_sdk_fade_out_center.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim/crm_sdk_fade_out_center.xml
+END
+crm_sdk_slide_in_bottom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim/crm_sdk_slide_in_bottom.xml
+END
+crm_sdk_pop_exit_anim.xml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim/crm_sdk_pop_exit_anim.xml
+END
+crm_sdk_slide_out_bottom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/umap_crm_android/!svn/ver/1810/branches/UMAP-CRM-ANDROID6.0.2/common/ucmcore/src/main/res/anim/crm_sdk_slide_out_bottom.xml
+END
