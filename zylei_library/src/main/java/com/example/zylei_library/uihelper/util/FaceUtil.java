@@ -1,4 +1,4 @@
-package com.example.zylei_library.uihelper.faceUtil;
+package com.example.zylei_library.uihelper.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -7,6 +7,7 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
 
+import com.example.zylei_library.uihelper.fragment.FaceFragmentHelper;
 import com.example.zylei_library.uihelper.entity.BaseFaceEntity;
 
 import java.util.List;
@@ -17,17 +18,27 @@ import java.util.regex.Pattern;
  * Created by ex-zhangyuelei001 on 2017/12/12.
  */
 
-public class BaseFaceUtil {
+public class FaceUtil {
+
+    public static SpannableString getExpression(Context context, SpannableString spannableString) {
+        List<BaseFaceEntity> faceEntities = FaceFragmentHelper.newInstance().getFaceEntities();
+        SpannableString span = null;
+        for (BaseFaceEntity faceEntity : faceEntities) {
+            span = getExpressionString(context, faceEntity, spannableString);
+        }
+
+        return span;
+    }
 
     /**
-     *将SpannableString转换成表情
+     * 将SpannableString转换成表情
      *
      * @param context
      * @param faceEntity
      * @param spannableString
      * @return
      */
-    public SpannableString getExpressionString(Context context, BaseFaceEntity faceEntity, SpannableString spannableString) {
+    private static SpannableString getExpressionString(Context context, BaseFaceEntity faceEntity, SpannableString spannableString) {
         List<Integer> imageIds = faceEntity.getFaceImgIds();
         if (imageIds == null || imageIds.isEmpty()) {
             throw new IllegalArgumentException("faceImgIds can not is null");
@@ -59,7 +70,7 @@ public class BaseFaceUtil {
      * @param pattern
      * @return SpannableString
      */
-    private SpannableString dealExpression(Context context, List<String> list, List<Integer> imageIds,
+    private static SpannableString dealExpression(Context context, List<String> list, List<Integer> imageIds,
                                            SpannableString spannableString, Pattern pattern) {
         Matcher matcher = pattern.matcher(spannableString);
         while (matcher.find()) {
@@ -68,6 +79,9 @@ public class BaseFaceUtil {
                 continue;
             }
             int index = list.indexOf(key);
+            if (index < 0) {
+                continue;
+            }
             int imageId = imageIds.get(index);
 
             Drawable drawable = context.getResources().getDrawable(imageId);

@@ -4,6 +4,10 @@ import android.content.Context;
 
 import com.example.zylei_library.R;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 /**
  * QQ表情的实体类
  *
@@ -13,8 +17,7 @@ import com.example.zylei_library.R;
 
 public class QQFaceEntity extends BaseFaceEntity {
 
-    private static QQFaceEntity qqFaceEntity;
-    private static final String PATTERN_QQ_FACE_NAME ="\\[[\\u4e00-\\u9fa5|A-Z]{1,}\\]";
+    private static final String PATTERN_QQ_FACE_NAME = "\\[[\\u4e00-\\u9fa5|A-Z]{1,}\\]";
     private static final String PATTERN_QQ_FACE_SYMBOL = "/::\\)" + "|/::~" + "|/::B" + "|/::\\|" + "|/:8\\-\\)" +
             "|/::<" + "|/::\\$" + "|/::X" + "|/::Z" + "|/::'\\(" + "|/::\\-\\|" + "|/::@" + "|/::P" +
             "|/::D" + "|/::O" + "|/::\\(" + "|/::\\+" + "|/:\\-\\-b" + "|/::Q" + "|/::T" + "|/:,@P" +
@@ -30,7 +33,7 @@ public class QQFaceEntity extends BaseFaceEntity {
             "|/:jump" + "|/:shake" + "|/:<O>" + "|/:circle" + "|/:kotow" + "|/:turn" + "|/:skip" + "|/:oY" +
             "|/:#\\-0" + "|/:hiphot" + "|/:kiss" + "|/:<&" + "|/:&>";
 
-    public static String[] faceNames = new String[]{
+    private static final String[] faceNames = new String[]{
             "[微笑]", "[撇嘴]", "[色]", "[发呆]", "[得意]",
             "[流泪]", "[害羞]", "[闭嘴]", "[睡]", "[大哭]",
             "[尴尬]", "[发怒]", "[调皮]", "[呲牙]", "[惊讶]",
@@ -53,7 +56,7 @@ public class QQFaceEntity extends BaseFaceEntity {
             "[转圈]", "[磕头]", "[回头]", "[跳绳]", "[投降]",
             "[激动]", "[乱舞]", "[献吻]", "[左太极]", "[右太极]"};
 
-    public static int[] faceIds = new int[]{
+    public static final int[] faceIds = new int[]{
             R.drawable.face1, R.drawable.face2, R.drawable.face3, R.drawable.face4, R.drawable.face5,
             R.drawable.face6, R.drawable.face7, R.drawable.face8, R.drawable.face9, R.drawable.face10,
             R.drawable.face11, R.drawable.face12, R.drawable.face13, R.drawable.face14, R.drawable.face15,
@@ -101,25 +104,40 @@ public class QQFaceEntity extends BaseFaceEntity {
             "/:#-0", "/:hiphot", "/:kiss", "/:<&", "/:&>"
     };
 
-    public static QQFaceEntity newInstance() {
-        if (qqFaceEntity == null) {
-            synchronized (QQFaceEntity.class) {
-                if (qqFaceEntity == null) {
-                    qqFaceEntity = new QQFaceEntity();
-                }
-            }
+    @Override
+    public List<String> getFaceImgNames() {
+        List<String> list = new ArrayList<>();
+        for (String name : faceNames) {
+            list.add(name);
         }
-        return qqFaceEntity;
+        return list;
     }
 
     @Override
-    public QQFaceEntity init(Context context) {
-        setFaceImgNames(faceNames);
-        setFaceImgIds(faceIds);
-        setFaceSymbols(faceSymbols);
-        setNamePattern(PATTERN_QQ_FACE_NAME);
-        setSymbolPattern(PATTERN_QQ_FACE_SYMBOL);
-        initExpression(context);
-        return this;
+    public List<Integer> getFaceImgIds() {
+        List<Integer> list = new ArrayList<>();
+        for (Integer id : faceIds) {
+            list.add(id);
+        }
+        return list;
+    }
+
+    @Override
+    public List<String> getFaceSymbols() {
+        List<String> list = new ArrayList<>();
+        for (String symbol : faceSymbols) {
+            list.add(symbol);
+        }
+        return list;
+    }
+
+    @Override
+    public Pattern getNamePattern() {
+        return Pattern.compile(PATTERN_QQ_FACE_NAME);
+    }
+
+    @Override
+    public Pattern getSymbolPattern() {
+        return Pattern.compile(PATTERN_QQ_FACE_SYMBOL);
     }
 }

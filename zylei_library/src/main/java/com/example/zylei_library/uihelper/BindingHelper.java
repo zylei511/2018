@@ -1,15 +1,12 @@
 package com.example.zylei_library.uihelper;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -19,30 +16,36 @@ import java.util.List;
  * @author ex-zhangyuelei001
  * @date 2017/12/8.
  */
-public class BaseHelper extends AbstractHelper implements ActiveInterface, View.OnClickListener {
+public class BindingHelper implements ViewActivable, View.OnClickListener {
 
     protected View view;
     protected int layoutId;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
-    /**
-     * 储存View和fragment的关系
-     */
-    private static HashMap<View, Fragment> hashMap = new HashMap<>();
-    /**
-     * 储存fragment与ViewState的关系
-     */
-    private static HashMap<View, ViewState> stateMap = new HashMap<>();
+
     /**
      * 储存HelperEntity
      */
     private static List<HelperEntity> helperEntities = new ArrayList<>();
     private int activiteStateId;
     private int inActiviteStateId;
-    private FragmentActivity activity;
+    private Fragment container;
     private Fragment fragment;
 
-    protected BaseHelper() {
+    protected BindingHelper() {
+    }
+
+    private static BindingHelper baseHelper;
+
+    public static BindingHelper newInstance() {
+        if (baseHelper == null) {
+            synchronized (BindingHelper.class) {
+                if (baseHelper == null) {
+                    baseHelper = new BindingHelper();
+                }
+            }
+        }
+        return baseHelper;
     }
 
 
@@ -52,10 +55,10 @@ public class BaseHelper extends AbstractHelper implements ActiveInterface, View.
      * @param fragment 模块数据所在的fragment
      * @param view     控制模块状态的View
      */
-    public BaseHelper bindView(FragmentActivity activity, Fragment fragment, int layoutId, View view) {
+    public BindingHelper bindView(Fragment container, Fragment fragment, int layoutId, View view) {
         this.view = view;
         this.layoutId = layoutId;
-        this.activity = activity;
+        this.container = container;
         this.fragment = fragment;
         return this;
     }
@@ -66,7 +69,7 @@ public class BaseHelper extends AbstractHelper implements ActiveInterface, View.
      * @param resId
      * @return
      */
-    public BaseHelper bindActiveState(int resId) {
+    public BindingHelper bindActiveState(int resId) {
         activiteStateId = resId;
         return this;
     }
@@ -77,7 +80,7 @@ public class BaseHelper extends AbstractHelper implements ActiveInterface, View.
      * @param resId
      * @return
      */
-    public BaseHelper bindInActiveState(int resId) {
+    public BindingHelper bindInActiveState(int resId) {
         inActiviteStateId = resId;
         return this;
     }
@@ -92,7 +95,7 @@ public class BaseHelper extends AbstractHelper implements ActiveInterface, View.
         helperEntity.setInActiviteStateId(inActiviteStateId);
         helperEntities.add(helperEntity);
 
-        fragmentManager = activity.getSupportFragmentManager();
+        fragmentManager = container.getChildFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(layoutId, fragment);
         fragmentTransaction.hide(fragment);
@@ -105,15 +108,14 @@ public class BaseHelper extends AbstractHelper implements ActiveInterface, View.
      */
     public void unBindView() {
         //移除所有Fragment
-        for (Fragment fragment : hashMap.values()) {
+        for (HelperEntity entity : helperEntities) {
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.remove(fragment);
+            fragmentTransaction.remove(entity.getBindFragment());
             fragmentTransaction.commit();
         }
 
         //清空两个map
-        hashMap.clear();
-        stateMap.clear();
+        helperEntities.clear();
     }
 
     @Override
@@ -146,10 +148,19 @@ public class BaseHelper extends AbstractHelper implements ActiveInterface, View.
         view.setBackgroundResource(entity.getInActiviteStateId());
     }
 
+    public void removeChildFragment(Fragment parentFragment) {
+        FragmentManager fragmentManager = parentFragment.getChildFragmentManager();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        for (Fragment fragment : fragments) {
+            fragmentManager.beginTransaction()
+                    .remove(fragment)
+                    .commitAllowingStateLoss();
+        }
+    }
+
     @Override
     public void onClick(View v) {
         initFragment(v);
-
     }
 
     /**

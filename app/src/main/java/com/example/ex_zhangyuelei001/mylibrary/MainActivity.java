@@ -4,11 +4,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.example.zylei_library.uihelper.BaseFragment;
-import com.example.zylei_library.uihelper.ChatBottomFragment;
+import com.example.zylei_library.uihelper.fragment.ChatBottomFragment;
 
 
-public class MainActivity extends FragmentActivity implements BaseFragment.OnFragmentInteractionListener {
+public class MainActivity extends FragmentActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +22,4 @@ public class MainActivity extends FragmentActivity implements BaseFragment.OnFra
         super.onDestroy();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

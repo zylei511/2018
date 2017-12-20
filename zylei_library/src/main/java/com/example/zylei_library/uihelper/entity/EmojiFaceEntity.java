@@ -6,6 +6,8 @@ import android.content.Context;
 import com.example.zylei_library.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * emoji表情的实体类
@@ -16,11 +18,10 @@ import java.util.ArrayList;
 
 public class EmojiFaceEntity extends BaseFaceEntity {
 
-    private static EmojiFaceEntity emojiFaceEntity;
 
     private static final String PATTERN_EMOJI_FACE_NAME = "[\\ue000-\\uefff]";
 
-    private static String[] faceNames = new String[]{"[1f60a]", "[1f60c]", "[1f60f]", "[1f601]", "[1f604]",
+    private static final String[] faceNames = new String[]{"[1f60a]", "[1f60c]", "[1f60f]", "[1f601]", "[1f604]",
             "[1f609]", "[1f612]", "[1f614]", "[1f616]", "[1f618]", "[1f621]", "[1f628]", "[1f630]", "[1f631]",
             "[1f633]", "[1f637]", "[1f603]", "[1f61e]", "[1f620]", "[1f61c]", "[1f60d]", "[1f613]", "[1f61d]",
             "[1f62d]", "[1f602]", "[1f622]", "[1f61a]", "[1f623]", "[1f632]", "[1f62a]", "[263a]", "[1f47f]",
@@ -43,7 +44,7 @@ public class EmojiFaceEntity extends BaseFaceEntity {
             "[1f6a7]", "[1f3a5]", "[1f4e0]", "[1f6a5]", "[1f302]", "[1f512]", "[26c4]", "[26bd]", "[1f4eb]", "[1f4bf]",
             "[1f3a4]", "[1f680]", "[26f5]", "[1f511]", "[2663]", "[3297]"};
 
-    public static int[] faceIds = new int[]{R.drawable.emoji_1f60a, R.drawable.emoji_1f60c, R.drawable.emoji_1f60f,
+    public static final int[] faceIds = new int[]{R.drawable.emoji_1f60a, R.drawable.emoji_1f60c, R.drawable.emoji_1f60f,
             R.drawable.emoji_1f601, R.drawable.emoji_1f604, R.drawable.emoji_1f609, R.drawable.emoji_1f612,
             R.drawable.emoji_1f614, R.drawable.emoji_1f616, R.drawable.emoji_1f618, R.drawable.emoji_1f621,
             R.drawable.emoji_1f628, R.drawable.emoji_1f630, R.drawable.emoji_1f631, R.drawable.emoji_1f633,
@@ -95,26 +96,37 @@ public class EmojiFaceEntity extends BaseFaceEntity {
             R.drawable.emoji_1f511, R.drawable.emoji_2663, R.drawable.emoji_3297};
 
 
-    public static EmojiFaceEntity newInstance() {
-        if (emojiFaceEntity == null) {
-            synchronized (QQFaceEntity.class) {
-                if (emojiFaceEntity == null) {
-                    emojiFaceEntity = new EmojiFaceEntity();
-                }
-            }
+    @Override
+    public List<String> getFaceImgNames() {
+        List<String> list = new ArrayList<>();
+        for (String name : faceNames) {
+            list.add(name);
         }
-        return emojiFaceEntity;
+        return list;
     }
 
     @Override
-    public EmojiFaceEntity init(Context context) {
-        setFaceImgNames(faceNames);
-        setFaceImgIds(faceIds);
-        setFaceSymbols(new ArrayList<String>());
-        setNamePattern(PATTERN_EMOJI_FACE_NAME);
-        setSymbolPattern("");
-        initExpression(context);
-        return this;
+    public List<Integer> getFaceImgIds() {
+        List<Integer> list = new ArrayList<>();
+        for (Integer id : faceIds) {
+            list.add(id);
+        }
+        return list;
+    }
+
+    @Override
+    public List<String> getFaceSymbols() {
+        return null;
+    }
+
+    @Override
+    public Pattern getNamePattern() {
+        return Pattern.compile(PATTERN_EMOJI_FACE_NAME);
+    }
+
+    @Override
+    public Pattern getSymbolPattern() {
+        return null;
     }
 
 }

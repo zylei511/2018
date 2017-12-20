@@ -1,13 +1,12 @@
-package com.example.zylei_library.uihelper.entity;
+package com.example.zylei_library.uihelper;
 
 import java.io.Serializable;
 
 /**
- * @desc <pre>
  * 表情数据模型
- * </pre>
+ *
  * @author Weiliang Hu
- * @Date 2013-12-11
+ * @date  2013-12-11
  */
 public class MsgFaceModle implements Serializable{
 	/** 表情资源图片对应的ID */

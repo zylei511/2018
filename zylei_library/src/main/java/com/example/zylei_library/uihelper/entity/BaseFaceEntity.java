@@ -20,101 +20,24 @@ import java.util.regex.Pattern;
 public abstract class BaseFaceEntity {
 
     /**
-     * 表情名字的List集合
-     */
-    private List<String> faceImgNames = new ArrayList<>();
-
-    /**
-     * 表情图片的id的List集合
-     */
-    private List<Integer> faceImgIds = new ArrayList<>();
-
-    /**
-     * 表情符号的List集合
-     */
-    private List<String> faceSymbols = new ArrayList<>();
-
-    /**
      * 储存bitmap的集合
      */
     private SparseArray<Bitmap> bitmaps = new SparseArray<>();
 
-    /**
-     * 匹配faceImgNames的正则表达式
-     */
-    private String namePattern;
 
-    /**
-     * 匹配faceSymbols的正则表达式
-     */
-    private String symbolPattern;
+    public abstract List<String> getFaceImgNames();
 
 
-    public List<String> getFaceImgNames() {
-        return faceImgNames;
-    }
+    public abstract List<Integer> getFaceImgIds();
 
-    protected void setFaceImgNames(List<String> faceImgNames) {
-        this.faceImgNames = faceImgNames;
-    }
 
-    protected void setFaceImgNames(String[] names) {
-        for (String name : names) {
-            faceImgNames.add(name);
-        }
-    }
+    public abstract List<String> getFaceSymbols();
 
-    public List<Integer> getFaceImgIds() {
-        return faceImgIds;
-    }
 
-    protected void setFaceImgIds(List<Integer> faceImgIds) {
-        this.faceImgIds = faceImgIds;
-    }
+    public abstract Pattern getNamePattern();
 
-    protected void setFaceImgIds(int[] ids) {
-        for (int id : ids) {
-            faceImgIds.add(id);
-        }
-    }
 
-    public List<String> getFaceSymbols() {
-        return faceSymbols;
-    }
-
-    protected void setFaceSymbols(List<String> faceSymbols) {
-        this.faceSymbols = faceSymbols;
-    }
-
-    protected void setFaceSymbols(String[] symbols) {
-        for (String symbol : symbols) {
-            faceSymbols.add(symbol);
-        }
-    }
-
-    public Pattern getNamePattern() {
-        return TextUtils.isEmpty(namePattern) ? null : Pattern.compile(namePattern);
-    }
-
-    public void setNamePattern(String namePattern) {
-        this.namePattern = namePattern;
-    }
-
-    public Pattern getSymbolPattern() {
-        return TextUtils.isEmpty(symbolPattern) ? null : Pattern.compile(symbolPattern);
-    }
-
-    public void setSymbolPattern(String symbolPattern) {
-        this.symbolPattern = symbolPattern;
-    }
-
-    /**
-     * 初始化BaseFaceEntity
-     *
-     * @param context
-     * @return
-     */
-    public abstract BaseFaceEntity init(Context context);
+    public abstract Pattern getSymbolPattern();
 
 
     /**
@@ -123,7 +46,7 @@ public abstract class BaseFaceEntity {
      * @param context
      */
     protected void initExpression(Context context) {
-        for (int id : faceImgIds) {
+        for (int id : getFaceImgIds()) {
             Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
             bitmaps.put(id, bitmap);
         }

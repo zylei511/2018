@@ -15,7 +15,7 @@ public class HelperEntity {
     private Fragment bindFragment;
     private int activiteStateId;
     private int inActiviteStateId;
-    private BaseHelper.ViewState viewState;
+    private BindingHelper.ViewState viewState;
 
     public View getBindView() {
         return bindView;
@@ -49,11 +49,11 @@ public class HelperEntity {
         this.inActiviteStateId = inActiviteStateId;
     }
 
-    public BaseHelper.ViewState getViewState() {
+    public BindingHelper.ViewState getViewState() {
         return viewState;
     }
 
-    public void setViewState(BaseHelper.ViewState viewState) {
+    public void setViewState(BindingHelper.ViewState viewState) {
         this.viewState = viewState;
     }
 }

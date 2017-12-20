@@ -9,7 +9,7 @@ import android.view.View;
  * @author ex-zhangyuelei001
  * @date 2017/12/8.
  */
-public interface ActiveInterface {
+public interface ViewActivable {
     /**
      * 模块处于可用状态执行的方法
      * @param entity

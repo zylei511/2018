@@ -1,8 +1,8 @@
-package com.example.zylei_library.uihelper.adapter;
+package com.example.zylei_library.uihelper.fragment;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
-import android.text.Layout;
+import android.text.SpannableString;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,8 +13,11 @@ import android.widget.RelativeLayout;
 
 
 import com.example.zylei_library.R;
+import com.example.zylei_library.uihelper.MsgFaceModle;
+import com.example.zylei_library.uihelper.adapter.FacesAdapter;
+import com.example.zylei_library.uihelper.adapter.ViewPagerAdapter;
 import com.example.zylei_library.uihelper.entity.BaseFaceEntity;
-import com.example.zylei_library.uihelper.entity.MsgFaceModle;
+import com.example.zylei_library.uihelper.util.FaceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,8 @@ import java.util.List;
  * Created by ex-zhangyuelei001 on 2017/12/13.
  */
 
-public class FaceView implements ViewPager.OnPageChangeListener {
-    private OnFaceItemClickListener onFaceItemClickListener;
-    private static FaceView entityFactory;
+public class FaceFragmentHelper implements ViewPager.OnPageChangeListener {
+    private static FaceFragmentHelper entityFactory;
     /**
      * 每页最大表情数
      */
@@ -50,13 +52,14 @@ public class FaceView implements ViewPager.OnPageChangeListener {
     private List<View> viewList = new ArrayList<>();
     public ViewGroup viewGroup;
     private ViewPagerPoint pagerPoint;
+    private OnFaceOprateListener onFaceOprateListener;
 
 
-    public static FaceView newInstance() {
+    public static FaceFragmentHelper newInstance() {
         if (entityFactory == null) {
-            synchronized (FaceView.class) {
+            synchronized (FaceFragmentHelper.class) {
                 if (entityFactory == null) {
-                    entityFactory = new FaceView();
+                    entityFactory = new FaceFragmentHelper();
                 }
             }
         }
@@ -68,14 +71,18 @@ public class FaceView implements ViewPager.OnPageChangeListener {
      *
      * @param viewPager
      */
-    public FaceView addViewPager(ViewPager viewPager) {
+    public FaceFragmentHelper addViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
         return this;
     }
 
-    public FaceView addViewPagerCursor(ViewGroup viewGroup) {
+    public FaceFragmentHelper addViewPagerCursor(ViewGroup viewGroup) {
         this.viewGroup = viewGroup;
         return this;
+    }
+
+    public List<BaseFaceEntity> getFaceEntities() {
+        return faceEntities;
     }
 
     /**
@@ -85,11 +92,10 @@ public class FaceView implements ViewPager.OnPageChangeListener {
      * @param tClass
      * @return
      */
-    public FaceView addFace(Context context, Class<? extends BaseFaceEntity> tClass) {
+    public FaceFragmentHelper addFace(Context context, Class<? extends BaseFaceEntity> tClass) {
         this.context = context;
         try {
             BaseFaceEntity baseFaceEntity = tClass.newInstance();
-            baseFaceEntity.init(context);
             faceEntities.add(baseFaceEntity);
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -99,12 +105,11 @@ public class FaceView implements ViewPager.OnPageChangeListener {
         return this;
     }
 
-    public FaceView addFaceItemClickListener(OnFaceItemClickListener onFaceItemClickListener) {
-        this.onFaceItemClickListener = onFaceItemClickListener;
-        return this;
+    public void setOnFaceOprateListener(OnFaceOprateListener onFaceOprateListener) {
+        this.onFaceOprateListener = onFaceOprateListener;
     }
 
-    public void create() {
+    public FaceFragmentHelper create() {
         for (BaseFaceEntity faceEntity : faceEntities) {
             //初始化viewpager的数据
             initData(faceEntity);
@@ -122,6 +127,7 @@ public class FaceView implements ViewPager.OnPageChangeListener {
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(viewList);
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(this);
+        return this;
     }
 
 
@@ -180,7 +186,6 @@ public class FaceView implements ViewPager.OnPageChangeListener {
             List<MsgFaceModle> list = dataList.subList(from, to);
             ViewPagerItemView pagerItemView = new ViewPagerItemView(context, list);
             GridView gridView = pagerItemView.initView();
-            pagerItemView.setOnFaceItemListener(onFaceItemClickListener);
             viewList.add(gridView);
         }
     }
@@ -201,12 +206,7 @@ public class FaceView implements ViewPager.OnPageChangeListener {
 
     }
 
-    public interface OnFaceItemClickListener {
-        void onFaceItemClick(MsgFaceModle msgFaceModle);
-    }
-
     class ViewPagerItemView implements AdapterView.OnItemClickListener {
-        private OnFaceItemClickListener onFaceItemListener;
         private Context itemContext;
         private List<MsgFaceModle> list;
 
@@ -218,10 +218,6 @@ public class FaceView implements ViewPager.OnPageChangeListener {
         ViewPagerItemView(Context context, List<MsgFaceModle> list) {
             this.itemContext = context;
             this.list = list;
-        }
-
-        void setOnFaceItemListener(OnFaceItemClickListener onFaceItemListener) {
-            this.onFaceItemListener = onFaceItemListener;
         }
 
         GridView initView() {
@@ -242,8 +238,17 @@ public class FaceView implements ViewPager.OnPageChangeListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            MsgFaceModle faceModle = list.get(position);
-            onFaceItemListener.onFaceItemClick(faceModle);
+            if (null == onFaceOprateListener) {
+                return;
+            }
+
+            if (position == MAX_PAGE_SIZE) {
+                onFaceOprateListener.onFaceDeleted();
+            } else {
+                MsgFaceModle faceModle = list.get(position);
+                SpannableString span = FaceUtil.getExpression(context, new SpannableString(faceModle.getCharacter()));
+                onFaceOprateListener.onFaceSelected(span);
+            }
         }
     }
 
@@ -271,7 +276,7 @@ public class FaceView implements ViewPager.OnPageChangeListener {
 
 
             ImageView imageView;
-            for (int i = 0; i < pageNum-1; i++) {
+            for (int i = 0; i < pageNum - 1; i++) {
                 imageView = new ImageView(context);
                 imageView.setBackgroundResource(R.drawable.icon_jw_face_index_nor);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(

@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.example.zylei_library.R;
-import com.example.zylei_library.uihelper.entity.MsgFaceModle;
+import com.example.zylei_library.uihelper.MsgFaceModle;
 
 import java.util.List;
 
