@@ -8,4 +8,6 @@
     <color name="font_corlor_black">#4d4d4c</color>
 
     <color name="color_line">#d7dbe5</color>
+
+    <color name="colorLoginEt">#aaaaaa</color>
 </resources>

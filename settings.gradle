@@ -1,1 +1,1 @@
-include ':ucmcore', ':crmAndroid', ':app', ':zylei_library'
+include ':crmAndroid', ':app', ':zylei_library'

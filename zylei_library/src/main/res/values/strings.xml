@@ -2,4 +2,8 @@
     <string name="app_name">zylei_library</string>
     <string name="txt_msg_hit">请输入文字</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_pictrue">图库</string>
+    <string name="text_replay">回复</string>
+    <string name="text_news">资讯</string>
+    <string name="text_send_messege">发送消息</string>
 </resources>

@@ -26,7 +26,7 @@ import com.example.zylei_library.uihelper.BindingHelper;
  * @date
  */
 public class ChatBottomFragment extends Fragment implements
-        OnFaceOprateListener, TextWatcher {
+        FaceFragment.OnFaceOprateListener, TextWatcher {
 
 
     private EditText editText;
@@ -49,15 +49,15 @@ public class ChatBottomFragment extends Fragment implements
         ImageButton faceBtn = (ImageButton) view.findViewById(R.id.face_btn);
         sendBtn = (ImageButton) view.findViewById(R.id.send_btn);
         addBtn = (ImageButton) view.findViewById(R.id.btn_chat_add);
-        leftFragment = new FaceFragment();
+        leftFragment = FaceFragment.newInstance();
         AddMoreFragment rightFragment = new AddMoreFragment();
         BindingHelper.newInstance()
                 .bindView(this, rightFragment, R.id.layout, addBtn)
                 .bindActiveState(R.drawable.icon_add_btn_pressed)
                 .bindInActiveState(R.drawable.icon_add_btn_unpressed)
                 .create();
-        BindingHelper.newInstance().
-                bindView(this, leftFragment, R.id.layout, faceBtn)
+        BindingHelper.newInstance()
+                .bindView(this, leftFragment, R.id.layout, faceBtn)
                 .bindActiveState(R.drawable.icon_expression_pressed)
                 .bindInActiveState(R.drawable.icon_expression_unpressed)
                 .create();

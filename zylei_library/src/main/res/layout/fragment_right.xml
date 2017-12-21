@@ -1,15 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.example.ex_zhangyuelei001.mylibrary.AddMoreFragment">
+    android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridView
+        android:id="@+id/chat_add_grid"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@android:color/darker_gray"
+        android:layout_height="200dp"
+        android:columnWidth="50dp"
+        android:paddingTop="@dimen/margin_top_10dp"
+        android:verticalSpacing="@dimen/padding_5dp"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:text="右边的fragment" />
+        android:numColumns="4"
+        android:stretchMode="columnWidth" />
 
-</FrameLayout>
+</RelativeLayout>
