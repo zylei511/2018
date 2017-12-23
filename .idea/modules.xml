@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/MyLibrary.iml" filepath="$PROJECT_DIR$/MyLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/crmAndroid/crmAndroid.iml" filepath="$PROJECT_DIR$/crmAndroid/crmAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucmcore/ucmcore.iml" filepath="$PROJECT_DIR$/ucmcore/ucmcore.iml" />
       <module fileurl="file://$PROJECT_DIR$/zylei_library/zylei_library.iml" filepath="$PROJECT_DIR$/zylei_library/zylei_library.iml" />
     </modules>
   </component>

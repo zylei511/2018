@@ -11,7 +11,9 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -19,6 +21,10 @@ import android.widget.ImageButton;
 
 import com.example.zylei_library.R;
 import com.example.zylei_library.uihelper.BindingHelper;
+
+import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
+import cn.dreamtobe.kpswitch.util.KeyboardUtil;
+import cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout;
 
 
 /**
@@ -44,6 +50,7 @@ public class ChatBottomFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_view, container, false);
+        final KPSwitchPanelFrameLayout layout = (KPSwitchPanelFrameLayout) view.findViewById(R.id.layout);
         editText = (EditText) view.findViewById(R.id.msg_et);
         editText.addTextChangedListener(this);
         ImageButton faceBtn = (ImageButton) view.findViewById(R.id.face_btn);
@@ -52,15 +59,48 @@ public class ChatBottomFragment extends Fragment implements
         leftFragment = FaceFragment.newInstance();
         AddMoreFragment rightFragment = new AddMoreFragment();
         BindingHelper.newInstance()
-                .bindView(this, rightFragment, R.id.layout, addBtn)
+                .bindView(this, rightFragment, R.id.layout, addBtn,layout)
                 .bindActiveState(R.drawable.icon_add_btn_pressed)
                 .bindInActiveState(R.drawable.icon_add_btn_unpressed)
                 .create();
         BindingHelper.newInstance()
-                .bindView(this, leftFragment, R.id.layout, faceBtn)
+                .bindView(this, leftFragment, R.id.layout, faceBtn,layout)
                 .bindActiveState(R.drawable.icon_expression_pressed)
                 .bindInActiveState(R.drawable.icon_expression_unpressed)
                 .create();
+        sendBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    KPSwitchConflictUtil.hidePanelAndKeyboard(layout);
+                }
+                return false;
+            }
+        });
+
+        KeyboardUtil.attach(getActivity(), layout);
+//        KPSwitchConflictUtil.attach(layout, editText);
+        KPSwitchConflictUtil.attach(layout, editText, new KPSwitchConflictUtil.SwitchClickListener() {
+            @Override
+            public void onClickSwitch(boolean switchToPanel) {
+                if (switchToPanel) {
+                    editText.clearFocus();
+                } else {
+                    editText.requestFocus();
+                }
+            }
+        });
+
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    layout.setVisibility(View.GONE);
+//                    KPSwitchConflictUtil.hidePanelAndKeyboard(layout);
+                }
+                return false;
+            }
+        });
 
         return view;
     }

@@ -1,9 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context="com.example.ex_zhangyuelei001.mylibrary.ChatBottomFragment">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_chatmain_input"
@@ -49,8 +47,8 @@
             >
             <ImageButton
                 android:id="@+id/send_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/chat_bottombar_btn_selector"
                 android:gravity="center"
@@ -67,10 +65,16 @@
 
     </LinearLayout>
 
-    <FrameLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLoginEt"/>
+
+    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout>
 
 </LinearLayout>

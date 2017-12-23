@@ -1,13 +1,20 @@
 package com.example.zylei_library.uihelper;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
 
 
 /**
@@ -27,10 +34,11 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
      * 储存HelperEntity
      */
     private static List<HelperEntity> helperEntities = new ArrayList<>();
-    private int activiteStateId;
-    private int inActiviteStateId;
+    private int activeStateId;
+    private int inActiveStateId;
     private Fragment container;
     private Fragment fragment;
+    private View layout;
 
     protected BindingHelper() {
     }
@@ -51,15 +59,15 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
 
     /**
      * 将模块fragment和对应的view绑定在一起
-     *
-     * @param fragment 模块数据所在的fragment
+     *  @param fragment 模块数据所在的fragment
      * @param view     控制模块状态的View
      */
-    public BindingHelper bindView(Fragment container, Fragment fragment, int layoutId, View view) {
+    public BindingHelper bindView(Fragment container, Fragment fragment, int layoutId, View view,View layout) {
         this.view = view;
         this.layoutId = layoutId;
         this.container = container;
         this.fragment = fragment;
+        this.layout = layout;
         return this;
     }
 
@@ -70,7 +78,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
      * @return
      */
     public BindingHelper bindActiveState(int resId) {
-        activiteStateId = resId;
+        activeStateId = resId;
         return this;
     }
 
@@ -81,7 +89,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
      * @return
      */
     public BindingHelper bindInActiveState(int resId) {
-        inActiviteStateId = resId;
+        inActiveStateId = resId;
         return this;
     }
 
@@ -91,8 +99,8 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         helperEntity.setBindView(view);
         helperEntity.setBindFragment(fragment);
         helperEntity.setViewState(ViewState.STATE_INACTIVE);
-        helperEntity.setActiviteStateId(activiteStateId);
-        helperEntity.setInActiviteStateId(inActiviteStateId);
+        helperEntity.setActiveStateId(activeStateId);
+        helperEntity.setInActiveStateId(inActiveStateId);
         helperEntities.add(helperEntity);
 
         fragmentManager = container.getChildFragmentManager();
@@ -119,7 +127,10 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
     }
 
     @Override
-    public void active(HelperEntity entity) {
+    public synchronized void active(HelperEntity entity) {
+        if (layout.getVisibility() != View.VISIBLE){
+            layout.setVisibility(View.VISIBLE);
+        }
         //设置控制器View的状态为ViewState.STATE_ACTIVE
         Fragment currentFragment = entity.getBindFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -129,13 +140,14 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         //重置View的状态
         entity.setViewState(ViewState.STATE_ACTIVE);
         View view = entity.getBindView();
-        view.setBackgroundResource(entity.getActiviteStateId());
-
-
+        view.setBackgroundResource(entity.getActiveStateId());
     }
 
     @Override
-    public void inActive(HelperEntity entity) {
+    public synchronized void inActive(HelperEntity entity) {
+        if (layout.getVisibility() == View.VISIBLE){
+            layout.setVisibility(View.GONE);
+        }
         //设置控制器View的状态为ViewState.STATE_INACTIVE
         Fragment currentFragment = entity.getBindFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -145,7 +157,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         //重置View的状态
         entity.setViewState(ViewState.STATE_INACTIVE);
         View view = entity.getBindView();
-        view.setBackgroundResource(entity.getInActiviteStateId());
+        view.setBackgroundResource(entity.getInActiveStateId());
     }
 
     public void removeChildFragment(Fragment parentFragment) {
@@ -160,6 +172,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        KPSwitchConflictUtil.hidePanelAndKeyboard(layout);
         initFragment(v);
     }
 
@@ -200,5 +213,15 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         //不可用状态
         STATE_INACTIVE
 
+    }
+
+    // 隐藏软键盘
+    public void hideInputManager(Context ct) {
+        try {
+            ((InputMethodManager) ct.getSystemService(ct.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(((Activity) ct)
+                    .getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        } catch (Exception e) {
+            Log.e("test", "hideInputManager Catch error,skip it!", e);
+        }
     }
 }

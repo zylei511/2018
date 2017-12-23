@@ -13,8 +13,8 @@ import android.view.View;
 public class HelperEntity {
     private View bindView;
     private Fragment bindFragment;
-    private int activiteStateId;
-    private int inActiviteStateId;
+    private int activeStateId;
+    private int inActiveStateId;
     private BindingHelper.ViewState viewState;
 
     public View getBindView() {
@@ -33,20 +33,20 @@ public class HelperEntity {
         this.bindFragment = bindFragment;
     }
 
-    public int getActiviteStateId() {
-        return activiteStateId;
+    public int getActiveStateId() {
+        return activeStateId;
     }
 
-    public void setActiviteStateId(int activiteStateId) {
-        this.activiteStateId = activiteStateId;
+    public void setActiveStateId(int activeStateId) {
+        this.activeStateId = activeStateId;
     }
 
-    public int getInActiviteStateId() {
-        return inActiviteStateId;
+    public int getInActiveStateId() {
+        return inActiveStateId;
     }
 
-    public void setInActiviteStateId(int inActiviteStateId) {
-        this.inActiviteStateId = inActiviteStateId;
+    public void setInActiveStateId(int inActiveStateId) {
+        this.inActiveStateId = inActiveStateId;
     }
 
     public BindingHelper.ViewState getViewState() {
