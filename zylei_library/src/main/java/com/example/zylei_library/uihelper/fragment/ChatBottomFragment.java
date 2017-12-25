@@ -11,7 +11,6 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,13 +31,13 @@ import cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout;
  * @date
  */
 public class ChatBottomFragment extends Fragment implements
-        FaceFragment.OnFaceOprateListener, TextWatcher {
+        FaceHelper.OnFaceOprateListener, TextWatcher {
 
 
     private EditText editText;
     private ImageButton sendBtn;
     private ImageButton addBtn;
-    private FaceFragment leftFragment;
+    private FaceHelper leftFragment;
     private static final String BRACKET_PRE = "[";
     private static final String BRACKET_BACK = "]";
 
@@ -56,40 +55,40 @@ public class ChatBottomFragment extends Fragment implements
         ImageButton faceBtn = (ImageButton) view.findViewById(R.id.face_btn);
         sendBtn = (ImageButton) view.findViewById(R.id.send_btn);
         addBtn = (ImageButton) view.findViewById(R.id.btn_chat_add);
-        leftFragment = FaceFragment.newInstance();
+        leftFragment = FaceHelper.newInstance();
         AddMoreFragment rightFragment = new AddMoreFragment();
-        BindingHelper.newInstance()
-                .bindView(this, rightFragment, R.id.layout, addBtn,layout)
-                .bindActiveState(R.drawable.icon_add_btn_pressed)
-                .bindInActiveState(R.drawable.icon_add_btn_unpressed)
-                .create();
-        BindingHelper.newInstance()
-                .bindView(this, leftFragment, R.id.layout, faceBtn,layout)
-                .bindActiveState(R.drawable.icon_expression_pressed)
-                .bindInActiveState(R.drawable.icon_expression_unpressed)
-                .create();
-        sendBtn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
+//        BindingHelper.newInstance()
+//                .bindView(this, rightFragment, R.id.layout, addBtn,layout)
+//                .bindActiveState(R.drawable.icon_add_btn_pressed)
+//                .bindInActiveState(R.drawable.icon_add_btn_unpressed)
+//                .create();
+//        BindingHelper.newInstance()
+//                .bindView(this, leftFragment, R.id.layout, faceBtn,layout)
+//                .bindActiveState(R.drawable.icon_expression_pressed)
+//                .bindInActiveState(R.drawable.icon_expression_unpressed)
+//                .create();
+//        sendBtn.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_UP) {
 //                    KPSwitchConflictUtil.hidePanelAndKeyboard(layout);
-                }
-                return false;
-            }
-        });
+//                }
+//                return false;
+//            }
+//        });
 
-        KeyboardUtil.attach(getActivity(), layout);
+//        KeyboardUtil.attach(getActivity(), layout);
 //        KPSwitchConflictUtil.attach(layout, editText);
-        KPSwitchConflictUtil.attach(layout, editText, new KPSwitchConflictUtil.SwitchClickListener() {
-            @Override
-            public void onClickSwitch(boolean switchToPanel) {
-                if (switchToPanel) {
-                    editText.clearFocus();
-                } else {
-                    editText.requestFocus();
-                }
-            }
-        });
+//        KPSwitchConflictUtil.attach(layout, editText, new KPSwitchConflictUtil.SwitchClickListener() {
+//            @Override
+//            public void onClickSwitch(boolean switchToPanel) {
+//                if (switchToPanel) {
+//                    editText.clearFocus();
+//                } else {
+//                    editText.requestFocus();
+//                }
+//            }
+//        });
 
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override

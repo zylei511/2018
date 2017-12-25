@@ -7,7 +7,7 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
 
-import com.example.zylei_library.uihelper.fragment.FaceFragment;
+import com.example.zylei_library.uihelper.fragment.FaceHelper;
 import com.example.zylei_library.uihelper.entity.BaseFaceEntity;
 
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public class FaceUtil {
 
     public static SpannableString getExpression(Context context, SpannableString spannableString) {
-        List<BaseFaceEntity> faceEntities = FaceFragment.newInstance().getFaceEntities();
+        List<BaseFaceEntity> faceEntities = FaceHelper.newInstance().getFaceEntities();
         SpannableString span = null;
         for (BaseFaceEntity faceEntity : faceEntities) {
             span = getExpressionString(context, faceEntity, spannableString);

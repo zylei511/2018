@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_chatmain_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f5f7fa"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    >
+    <EditText
+        android:id="@+id/msg_et"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:maxLines="5"
+        android:maxHeight="50dp"
+        android:maxEms="10"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/font_corlor_black"
+        android:hint="@string/txt_msg_hit"
+        android:layout_weight="100"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_left_3dp"
+        android:background="@drawable/login_bc"
+        android:inputType="textMultiLine"
+        android:paddingBottom="4.0dip"
+        android:paddingTop="4.0dip"
+        android:paddingStart="10dp"
+        android:textSize="@dimen/txt_15sp" />
+
+
+    <ImageButton
+        android:id="@+id/face_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/margin_left_3dp"
+        android:background="@drawable/btn_face_bc" />
+
+    <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        >
+        <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/chat_bottombar_btn_selector"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:visibility="invisible" />
+        <!-- 附件 -->
+
+        <ImageButton
+            android:id="@+id/btn_chat_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_add_bc" />
+    </FrameLayout>
+
+</LinearLayout>

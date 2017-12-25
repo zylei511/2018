@@ -1,2 +1,2 @@
-include ':crmAndroid', ':app', ':zylei_library',':library' +
+include ':crmAndroid', ':app', ':zylei_library', ':library', ':demo' +
         ''

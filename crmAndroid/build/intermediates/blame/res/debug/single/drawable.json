@@ -92,12 +92,12 @@
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable/switch_trace_on.xml"
     },
     {
-        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable/bg_alertbutton_none.xml",
-        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable/bg_alertbutton_none.xml"
-    },
-    {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable/icon_btn_back.png",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable/icon_btn_back.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable/bg_alertbutton_none.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable/bg_alertbutton_none.xml"
     },
     {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",

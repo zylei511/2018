@@ -1,0 +1,31 @@
+<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_message_list" />
+
+    <include layout="@layout/layout_send_message_bar" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line" />
+
+    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout
+        android:id="@+id/panel_root"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:background="@color/chatting_list_bg"
+        android:visibility="gone">
+
+        <!--<include layout="@layout/merge_panel_content" />-->
+        <include layout="@layout/fragment_right"/>
+        <include layout="@layout/fragment_left"/>
+
+    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout>
+
+</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>

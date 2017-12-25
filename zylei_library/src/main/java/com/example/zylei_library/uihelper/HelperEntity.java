@@ -3,6 +3,7 @@ package com.example.zylei_library.uihelper;
 
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * 用于存放View和Fragment的相关数据
@@ -12,7 +13,8 @@ import android.view.View;
  */
 public class HelperEntity {
     private View bindView;
-    private Fragment bindFragment;
+    private ViewGroup bindLayout;
+    private ViewGroup parentLayout;
     private int activeStateId;
     private int inActiveStateId;
     private BindingHelper.ViewState viewState;
@@ -25,12 +27,12 @@ public class HelperEntity {
         this.bindView = bindView;
     }
 
-    public Fragment getBindFragment() {
-        return bindFragment;
+    public ViewGroup getBindLayout() {
+        return bindLayout;
     }
 
-    public void setBindFragment(Fragment bindFragment) {
-        this.bindFragment = bindFragment;
+    public void setBindLayout(ViewGroup bindLayout) {
+        this.bindLayout = bindLayout;
     }
 
     public int getActiveStateId() {
@@ -55,5 +57,13 @@ public class HelperEntity {
 
     public void setViewState(BindingHelper.ViewState viewState) {
         this.viewState = viewState;
+    }
+
+    public ViewGroup getParentLayout() {
+        return parentLayout;
+    }
+
+    public void setParentLayout(ViewGroup parentLayout) {
+        this.parentLayout = parentLayout;
     }
 }

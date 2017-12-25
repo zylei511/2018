@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ChattingResolvedFragmentActivity"
             android:label="@string/title_activity_main"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

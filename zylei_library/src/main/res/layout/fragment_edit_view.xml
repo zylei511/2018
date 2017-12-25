@@ -68,7 +68,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorLoginEt"/>
+        android:background="@color/color_line"/>
 
     <cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout
         android:id="@+id/layout"

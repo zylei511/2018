@@ -316,12 +316,12 @@
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-xhdpi/common_loading4_11.png"
     },
     {
-        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-xhdpi/common_loading3_0.png",
-        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-xhdpi/common_loading3_0.png"
-    },
-    {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-xhdpi/common_loading3_3.png",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-xhdpi/common_loading3_3.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-xhdpi/common_loading3_0.png",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-xhdpi/common_loading3_0.png"
     },
     {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-xhdpi/icon_contact_list_unpressed.png",

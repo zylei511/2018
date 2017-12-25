@@ -1,11 +1,8 @@
 package com.example.zylei_library.uihelper.fragment;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,8 +17,6 @@ import com.example.zylei_library.uihelper.MsgFaceModle;
 import com.example.zylei_library.uihelper.adapter.FacesAdapter;
 import com.example.zylei_library.uihelper.adapter.ViewPagerAdapter;
 import com.example.zylei_library.uihelper.entity.BaseFaceEntity;
-import com.example.zylei_library.uihelper.entity.EmojiFaceEntity;
-import com.example.zylei_library.uihelper.entity.QQFaceEntity;
 import com.example.zylei_library.uihelper.util.FaceUtil;
 
 import java.util.ArrayList;
@@ -31,8 +26,8 @@ import java.util.List;
  * Created by ex-zhangyuelei001 on 2017/12/13.
  */
 
-public class FaceFragment extends Fragment implements ViewPager.OnPageChangeListener {
-    private static FaceFragment entityFactory;
+public class FaceHelper implements ViewPager.OnPageChangeListener {
+    private static FaceHelper entityFactory;
     /**
      * 每页最大表情数
      */
@@ -60,42 +55,42 @@ public class FaceFragment extends Fragment implements ViewPager.OnPageChangeList
     private OnFaceOprateListener onFaceOprateListener;
 
 
-    public static FaceFragment newInstance() {
+    public static FaceHelper newInstance() {
         if (entityFactory == null) {
-            synchronized (FaceFragment.class) {
+            synchronized (FaceHelper.class) {
                 if (entityFactory == null) {
-                    entityFactory = new FaceFragment();
+                    entityFactory = new FaceHelper();
                 }
             }
         }
         return entityFactory;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_left, container, false);
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        LinearLayout layout = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
-        addFace(getActivity(), QQFaceEntity.class);
-        addFace(getActivity(), EmojiFaceEntity.class);
-        addViewPager(viewPager);
-        addViewPagerCursor(layout);
-        create();
-        return view;
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_left, container, false);
+//        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+//        LinearLayout layout = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
+//        addFace(getActivity(), QQFaceEntity.class);
+//        addFace(getActivity(), EmojiFaceEntity.class);
+//        addViewPager(viewPager);
+//        addViewPagerCursor(layout);
+//        create();
+//        return view;
+//    }
 
     /**
      * 添加ViewPager
      *
      * @param viewPager
      */
-    public FaceFragment addViewPager(ViewPager viewPager) {
+    public FaceHelper addViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
         return this;
     }
 
-    public FaceFragment addViewPagerCursor(ViewGroup viewGroup) {
+    public FaceHelper addViewPagerCursor(ViewGroup viewGroup) {
         this.viewGroup = viewGroup;
         return this;
     }
@@ -111,7 +106,7 @@ public class FaceFragment extends Fragment implements ViewPager.OnPageChangeList
      * @param tClass
      * @return
      */
-    public FaceFragment addFace(Context context, Class<? extends BaseFaceEntity> tClass) {
+    public FaceHelper addFace(Context context, Class<? extends BaseFaceEntity> tClass) {
         this.context = context;
         try {
             BaseFaceEntity baseFaceEntity = tClass.newInstance();
@@ -119,8 +114,6 @@ public class FaceFragment extends Fragment implements ViewPager.OnPageChangeList
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (java.lang.InstantiationException e) {
             e.printStackTrace();
         }
         return this;
@@ -130,7 +123,7 @@ public class FaceFragment extends Fragment implements ViewPager.OnPageChangeList
         this.onFaceOprateListener = onFaceOprateListener;
     }
 
-    public FaceFragment create() {
+    public FaceHelper create() {
         for (BaseFaceEntity faceEntity : faceEntities) {
             //初始化viewpager的数据
             initData(faceEntity);
