@@ -43,9 +43,15 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         return baseHelper;
     }
 
+    /**
+     * 重置、初始化View的状态
+     */
     public void reset(){
         for (HelperEntity entity:helperEntities){
-            inActive(entity);
+            //重置View的状态
+            entity.setViewState(ViewState.STATE_INACTIVE);
+            View view = entity.getBindView();
+            view.setBackgroundResource(entity.getInActiveStateId());
         }
     }
 
@@ -94,8 +100,6 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
 
     @Override
     public synchronized void active(HelperEntity entity) {
-//        KeyboardUtil.hideKeyboard(entity.getBindView());
-
         ViewGroup layout = entity.getBindLayout();
         if (layout.getVisibility() != View.VISIBLE){
             layout.setVisibility(View.VISIBLE);
@@ -128,17 +132,20 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
     }
 
     /**
-     * 重置fragment的状态
+     * 更新panel的状态
      *
      * @param view
      */
     private void initView(View view) {
+        int visible = View.GONE;
         for (HelperEntity entity : helperEntities) {
             ViewState viewState = entity.getViewState();
+            //重置点击的View所对应panel的状态
             if (viewState == ViewState.STATE_ACTIVE && entity.getBindView() == view) {
                 inActive(entity);
                 continue;
             } else if (viewState == ViewState.STATE_INACTIVE && entity.getBindView() == view) {
+                visible = View.VISIBLE;
                 active(entity);
             }
 
@@ -146,7 +153,8 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
                 inActive(entity);
             }
         }
-
+        //由于parentLayout是公用的，统一设置它的状态
+        parentLayout.setVisibility(visible);
     }
 
     /**

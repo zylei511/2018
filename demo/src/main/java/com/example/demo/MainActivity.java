@@ -101,7 +101,7 @@ public class MainActivity extends FragmentActivity implements TextWatcher {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     BindingHelper.newInstance().reset();
-                    layout.setVisibility(View.GONE);
+//                    layout.setVisibility(View.GONE);
                 }
                 return false;
             }

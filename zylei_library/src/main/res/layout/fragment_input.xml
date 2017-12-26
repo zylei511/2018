@@ -1,4 +1,4 @@
-<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -73,12 +73,13 @@
     <cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="210dp"
         android:visibility="visible">
 
-        <include layout="@layout/fragment_left"/>
 
-        <!--<include layout="@layout/fragment_right"/>-->
+
+        <include layout="@layout/fragment_right"/>
+        <include layout="@layout/fragment_left" />
     </cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout>
 
-</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>
+</LinearLayout>

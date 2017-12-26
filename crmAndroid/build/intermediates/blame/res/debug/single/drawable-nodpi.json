@@ -364,12 +364,12 @@
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-nodpi/emoji_1f62d.png"
     },
     {
-        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-nodpi/emoji_1f443.png",
-        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-nodpi/emoji_1f443.png"
-    },
-    {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-nodpi/emoji_1f42d.png",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-nodpi/emoji_1f42d.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-nodpi/emoji_1f443.png",
+        "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/drawable-nodpi/emoji_1f443.png"
     },
     {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/drawable-nodpi/emoji_1f388.png",

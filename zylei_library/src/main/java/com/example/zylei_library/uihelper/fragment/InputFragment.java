@@ -16,10 +16,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.zylei_library.R;
+import com.example.zylei_library.uihelper.BindingHelper;
 import com.example.zylei_library.uihelper.entity.QQFaceEntity;
 
 import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
@@ -47,45 +50,47 @@ public class InputFragment extends Fragment implements TextWatcher {
         ImageButton faceBtn = (ImageButton) view.findViewById(R.id.face_btn);
         sendBtn = (ImageButton) view.findViewById(R.id.send_btn);
         addBtn = (ImageButton) view.findViewById(R.id.btn_chat_add);
-
+        RelativeLayout faceLayout = (RelativeLayout)view.findViewById(R.id.left_layout);
+        RelativeLayout addLayout = (RelativeLayout)view.findViewById(R.id.add_layout);
         ViewPager facePager = (ViewPager) view.findViewById(R.id.viewpager);
         LinearLayout pagerCursor = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
+        GridView gridview = (GridView)view.findViewById(R.id.chat_add_grid);
+
+        new AddMoreHelper().init(getActivity(),gridview);
         FaceHelper.newInstance()
                 .addFace(getActivity(), QQFaceEntity.class)
                 .addViewPager(facePager)
                 .addViewPagerCursor(pagerCursor)
                 .create();
-//        BindingHelper.newInstance()
-//                .bindView(faceBtn, layout)
-//                .addStateResource(R.drawable.icon_expression_pressed, R.drawable.icon_expression_unpressed)
-//                .bind();
+
+        BindingHelper.newInstance()
+                .bindView(faceBtn,faceLayout,layout)
+                .addStateResource(R.drawable.icon_expression_pressed,
+                        R.drawable.icon_expression_unpressed)
+                .bind();
+
+        BindingHelper.newInstance()
+                .bindView(addBtn,addLayout,layout)
+                .addStateResource(R.drawable.icon_add_btn_pressed,
+                        R.drawable.icon_add_btn_unpressed)
+                .bind();
+
 
 
         KeyboardUtil.attach(getActivity(), layout,
-                // Add keyboard showing state callback, do like this when you want to listen in the
-                // keyboard's show/hide change.
                 new KeyboardUtil.OnKeyboardShowingListener() {
                     @Override
                     public void onKeyboardShowing(boolean isShowing) {
                         Log.d("TAG", String.format("Keyboard is %s", isShowing ? "showing" : "hiding"));
                     }
                 });
-        KPSwitchConflictUtil.attach(layout, faceBtn, editText, new KPSwitchConflictUtil.SwitchClickListener() {
-            @Override
-            public void onClickSwitch(boolean switchToPanel) {
-                if (switchToPanel) {
-                    editText.clearFocus();
-                } else {
-                    editText.requestFocus();
-                }
-            }
-        });
 
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-                    layout.setVisibility(View.GONE);
+                    //重置Panel
+                    BindingHelper.newInstance().reset();
                 }
                 return false;
             }
