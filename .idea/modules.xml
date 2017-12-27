@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/fragment_demo/fragment_demo.iml" filepath="$PROJECT_DIR$/fragment_demo/fragment_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ucmcore/ucmcore.iml" filepath="$PROJECT_DIR$/ucmcore/ucmcore.iml" />
       <module fileurl="file://$PROJECT_DIR$/zylei_library/zylei_library.iml" filepath="$PROJECT_DIR$/zylei_library/zylei_library.iml" />
     </modules>
   </component>

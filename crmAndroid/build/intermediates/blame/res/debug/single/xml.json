@@ -2,5 +2,13 @@
     {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/xml/config_pa.xml",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/xml/config_pa.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/xml/config_pa.xml",
+        "source": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/src/main/res/xml/config_pa.xml"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/xml/config_pa.xml",
+        "source": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/src/main/res/xml/config_pa.xml"
     }
 ]

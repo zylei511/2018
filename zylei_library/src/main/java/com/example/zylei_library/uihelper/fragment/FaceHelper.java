@@ -66,19 +66,6 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
         return entityFactory;
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_left, container, false);
-//        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-//        LinearLayout layout = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
-//        addFace(getActivity(), QQFaceEntity.class);
-//        addFace(getActivity(), EmojiFaceEntity.class);
-//        addViewPager(viewPager);
-//        addViewPagerCursor(layout);
-//        create();
-//        return view;
-//    }
 
     /**
      * 添加ViewPager

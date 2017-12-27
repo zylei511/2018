@@ -1,8 +1,5 @@
 package com.example.zylei_library.uihelper.entity;
 
-import android.content.Context;
-
-
 import com.example.zylei_library.R;
 
 import java.util.ArrayList;

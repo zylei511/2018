@@ -1,14 +1,38 @@
 [
     {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/app_icon.png",
+        "source": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/app_icon.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/head_disable.png",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/head_disable.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/app_icon.png",
+        "source": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/app_icon.png"
     },
     {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/head_disable.png",
+        "source": "/Users/ex-zhangyuelei001/local_git/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/head_disable.png"
+    },
+    {
         "merged": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/app_icon.png",
         "source": "/Users/ex-zhangyuelei001/Desktop/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/app_icon.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/head_disable.png",
+        "source": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/head_disable.png"
+    },
+    {
+        "merged": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/Users/ex-zhangyuelei001/Desktop/git/MyLibrary/crmAndroid/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     }
 ]

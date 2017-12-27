@@ -27,18 +27,7 @@ public class AddMoreHelper implements AdapterView.OnItemClickListener {
     public AddMoreHelper() {
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_right, container, false);
-//        GridView gridView = (GridView) view.findViewById(R.id.chat_add_grid);
-//        ChatAddGridAdapter addGridAdapter = new ChatAddGridAdapter(getActivity(),
-//                getDatas(), R.layout.item_chat_add_grid_layout);
-//        gridView.setAdapter(addGridAdapter);
-//        gridView.setOnItemClickListener(this);
-//        return view;
-//    }
-    public void init(Context context,GridView gridview){
+    public void init(Context context, GridView gridview) {
         ChatAddGridAdapter addGridAdapter = new ChatAddGridAdapter(context,
                 getDatas(context), R.layout.item_chat_add_grid_layout);
         gridview.setAdapter(addGridAdapter);
@@ -47,7 +36,7 @@ public class AddMoreHelper implements AdapterView.OnItemClickListener {
 
     private List<ChatAddBean> getDatas(Context context) {
         List<ChatAddBean> list = new ArrayList<>();
-        for (int i = 0;i<icons.length;i++){
+        for (int i = 0; i < icons.length; i++) {
             ChatAddBean chatAddBean = new ChatAddBean();
             chatAddBean.setIconName(context.getString(names[i]));
             chatAddBean.setIconRes(icons[i]);

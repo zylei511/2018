@@ -1,6 +1,7 @@
 package com.example.zylei_library.uihelper.fragment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,11 +11,11 @@ import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -25,78 +26,109 @@ import com.example.zylei_library.R;
 import com.example.zylei_library.uihelper.BindingHelper;
 import com.example.zylei_library.uihelper.entity.QQFaceEntity;
 
-import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
 import cn.dreamtobe.kpswitch.util.KeyboardUtil;
 import cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout;
 
-public class InputFragment extends Fragment implements TextWatcher {
+/**
+ * 带输入框的的Fragment，主要用在聊天页面底部
+ *
+ * @author ex-zhangyuelei001
+ * @date 2017.12.26
+ */
+public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener {
     private EditText editText;
     private ImageButton sendBtn;
     private ImageButton addBtn;
-    private static final String BRACKET_PRE = "[";
-    private static final String BRACKET_BACK = "]";
+    private ImageButton faceBtn;
+    private RelativeLayout faceLayout;
+    private RelativeLayout addLayout;
+    private ViewPager facePager;
+    private LinearLayout pagerCursor;
+    private GridView gridview;
+    private KPSwitchPanelRelativeLayout panelLayout;
+    private OnSendClickListener mOnSendClickListener;
+    private OnAddMoreItemClickListener mOnAddMoreItemClickListener;
 
     public InputFragment() {
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnSendClickListener) {
+            mOnSendClickListener = (OnSendClickListener) context;
+        }
+
+        if (context instanceof OnAddMoreItemClickListener) {
+            mOnAddMoreItemClickListener = (OnAddMoreItemClickListener) context;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_input, container, false);
-        final KPSwitchPanelRelativeLayout layout = (KPSwitchPanelRelativeLayout) view.findViewById(R.id.layout);
-        editText = (EditText) view.findViewById(R.id.msg_et);
-        editText.addTextChangedListener(this);
-        ImageButton faceBtn = (ImageButton) view.findViewById(R.id.face_btn);
-        sendBtn = (ImageButton) view.findViewById(R.id.send_btn);
-        addBtn = (ImageButton) view.findViewById(R.id.btn_chat_add);
-        RelativeLayout faceLayout = (RelativeLayout)view.findViewById(R.id.left_layout);
-        RelativeLayout addLayout = (RelativeLayout)view.findViewById(R.id.add_layout);
-        ViewPager facePager = (ViewPager) view.findViewById(R.id.viewpager);
-        LinearLayout pagerCursor = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
-        GridView gridview = (GridView)view.findViewById(R.id.chat_add_grid);
+        initViews(view);
+        initFaceViewData();
+        initAddViewData();
+        //保存keyboard的高度
+        KeyboardUtil.attach(getActivity(), panelLayout);
 
-        new AddMoreHelper().init(getActivity(),gridview);
+        return view;
+    }
+
+    /**
+     * 初始化添加按钮下的数据
+     */
+    private void initAddViewData() {
+        new AddMoreHelper().init(getActivity(), gridview);
+        BindingHelper.newInstance()
+                .bindView(addBtn, addLayout, panelLayout)
+                .addStateResource(R.drawable.icon_add_btn_pressed,
+                        R.drawable.icon_add_btn_unpressed)
+                .bind();
+    }
+
+    /**
+     * 初始化表情包数据
+     */
+    private void initFaceViewData() {
+        //填充表情数据
         FaceHelper.newInstance()
                 .addFace(getActivity(), QQFaceEntity.class)
                 .addViewPager(facePager)
                 .addViewPagerCursor(pagerCursor)
                 .create();
 
+        //绑定View和layout
         BindingHelper.newInstance()
-                .bindView(faceBtn,faceLayout,layout)
+                .bindView(faceBtn, faceLayout, panelLayout)
                 .addStateResource(R.drawable.icon_expression_pressed,
                         R.drawable.icon_expression_unpressed)
                 .bind();
+    }
 
-        BindingHelper.newInstance()
-                .bindView(addBtn,addLayout,layout)
-                .addStateResource(R.drawable.icon_add_btn_pressed,
-                        R.drawable.icon_add_btn_unpressed)
-                .bind();
+    /**
+     * 初始化View
+     *
+     * @param view rootView
+     */
+    private void initViews(View view) {
+        panelLayout = (KPSwitchPanelRelativeLayout) view.findViewById(R.id.layout);
+        editText = (EditText) view.findViewById(R.id.msg_et);
+        editText.addTextChangedListener(this);
+        editText.setOnTouchListener(this);
+        faceBtn = (ImageButton) view.findViewById(R.id.face_btn);
+        sendBtn = (ImageButton) view.findViewById(R.id.send_btn);
+        sendBtn.setOnClickListener(this);
+        addBtn = (ImageButton) view.findViewById(R.id.btn_chat_add);
+        faceLayout = (RelativeLayout) view.findViewById(R.id.left_layout);
+        addLayout = (RelativeLayout) view.findViewById(R.id.add_layout);
+        facePager = (ViewPager) view.findViewById(R.id.viewpager);
+        pagerCursor = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
+        gridview = (GridView) view.findViewById(R.id.chat_add_grid);
+        gridview.setOnItemClickListener(this);
 
-
-
-        KeyboardUtil.attach(getActivity(), layout,
-                new KeyboardUtil.OnKeyboardShowingListener() {
-                    @Override
-                    public void onKeyboardShowing(boolean isShowing) {
-                        Log.d("TAG", String.format("Keyboard is %s", isShowing ? "showing" : "hiding"));
-                    }
-                });
-
-        editText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    //重置Panel
-                    BindingHelper.newInstance().reset();
-                }
-                return false;
-            }
-        });
-
-        return view;
     }
 
     /**
@@ -135,4 +167,39 @@ public class InputFragment extends Fragment implements TextWatcher {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        String content = editText.getText().toString();
+        if (mOnSendClickListener != null) {
+            mOnSendClickListener.onSend(content);
+        }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (v.getId() == R.id.msg_et
+                && event.getAction() == MotionEvent.ACTION_UP) {
+            //重置Panel
+            BindingHelper.newInstance().reset();
+        }
+        return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mOnAddMoreItemClickListener != null) {
+            mOnAddMoreItemClickListener.onAddMoreItemClick(parent, view, position, id);
+        }
+    }
+
+    /**
+     * 发送按钮的回调接口
+     */
+    public interface OnSendClickListener {
+        void onSend(String content);
+    }
+
+    public interface OnAddMoreItemClickListener {
+        void onAddMoreItemClick(AdapterView<?> parent, View view, int position, long id);
+    }
 }
