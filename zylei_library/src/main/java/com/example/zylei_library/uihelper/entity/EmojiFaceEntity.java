@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 public class EmojiFaceEntity extends BaseFaceEntity {
 
 
+//    private static final String PATTERN_EMOJI_FACE_NAME = "[\\ue000-\\uefff]";
     private static final String PATTERN_EMOJI_FACE_NAME = "[\\ue000-\\uefff]";
 
     private static final String[] faceNames = new String[]{"[1f60a]", "[1f60c]", "[1f60f]", "[1f601]", "[1f604]",

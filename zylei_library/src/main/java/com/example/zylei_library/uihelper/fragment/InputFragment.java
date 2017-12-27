@@ -1,7 +1,6 @@
 package com.example.zylei_library.uihelper.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 
 import com.example.zylei_library.R;
 import com.example.zylei_library.uihelper.BindingHelper;
+import com.example.zylei_library.uihelper.entity.EmojiFaceEntity;
 import com.example.zylei_library.uihelper.entity.QQFaceEntity;
 
 import cn.dreamtobe.kpswitch.util.KeyboardUtil;
@@ -35,7 +36,7 @@ import cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout;
  * @author ex-zhangyuelei001
  * @date 2017.12.26
  */
-public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener {
+public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener, FaceHelper.OnFaceOprateListener {
     private EditText editText;
     private ImageButton sendBtn;
     private ImageButton addBtn;
@@ -98,6 +99,7 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
                 .addFace(getActivity(), QQFaceEntity.class)
                 .addViewPager(facePager)
                 .addViewPagerCursor(pagerCursor)
+                .setOnFaceOprateListener(this)
                 .create();
 
         //绑定View和layout
@@ -189,6 +191,27 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (mOnAddMoreItemClickListener != null) {
             mOnAddMoreItemClickListener.onAddMoreItemClick(parent, view, position, id);
+        }
+    }
+
+    @Override
+    public void onFaceSelected(SpannableString spanEmojiStr) {
+        editText.append(spanEmojiStr);
+    }
+
+    @Override
+    public void onFaceDeleted() {
+        int selection = editText.getSelectionStart();
+        String text = editText.getText().toString();
+        if (selection > 0) {
+            String text2 = text.substring(selection - 1);
+            if ("]".equals(text2)) {
+                int start = text.lastIndexOf("[");
+                int end = selection;
+                editText.getText().delete(start, end);
+                return;
+            }
+            editText.getText().delete(selection - 1, selection);
         }
     }
 

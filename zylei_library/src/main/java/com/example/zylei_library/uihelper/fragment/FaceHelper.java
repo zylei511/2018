@@ -106,8 +106,9 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
         return this;
     }
 
-    public void setOnFaceOprateListener(OnFaceOprateListener onFaceOprateListener) {
+    public FaceHelper setOnFaceOprateListener(OnFaceOprateListener onFaceOprateListener) {
         this.onFaceOprateListener = onFaceOprateListener;
+        return this;
     }
 
     public FaceHelper create() {
@@ -115,6 +116,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
             //初始化viewpager的数据
             initData(faceEntity);
         }
+        FaceUtil.getInstance().setFaceEntities(faceEntities);
         //添加删除按钮
         addDelBtn();
         //初始化viewpager中的单个页面
@@ -247,7 +249,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
                 onFaceOprateListener.onFaceDeleted();
             } else {
                 MsgFaceModle faceModle = list.get(position);
-                SpannableString span = FaceUtil.getExpression(context, new SpannableString(faceModle.getCharacter()));
+                SpannableString span = FaceUtil.getInstance().getExpression(context, new SpannableString(faceModle.getCharacter()));
                 onFaceOprateListener.onFaceSelected(span);
             }
         }

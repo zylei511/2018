@@ -6,10 +6,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
-
-import com.example.zylei_library.uihelper.fragment.FaceHelper;
 import com.example.zylei_library.uihelper.entity.BaseFaceEntity;
-
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,11 +16,30 @@ import java.util.regex.Pattern;
  */
 
 public class FaceUtil {
+    private FaceUtil() {
+    }
 
-    public static SpannableString getExpression(Context context, SpannableString spannableString) {
-        List<BaseFaceEntity> faceEntities = FaceHelper.newInstance().getFaceEntities();
+    public static FaceUtil getInstance() {
+        return FaceUtilHolder.instance;
+    }
+
+    static class FaceUtilHolder {
+        static FaceUtil instance = new FaceUtil();
+    }
+
+    private List<BaseFaceEntity> faceEntities;
+
+    public List<BaseFaceEntity> getFaceEntities() {
+        return faceEntities;
+    }
+
+    public void setFaceEntities(List<BaseFaceEntity> faceEntities) {
+        this.faceEntities = faceEntities;
+    }
+
+    public SpannableString getExpression(Context context, SpannableString spannableString) {
         SpannableString span = null;
-        for (BaseFaceEntity faceEntity : faceEntities) {
+        for (BaseFaceEntity faceEntity : getFaceEntities()) {
             span = getExpressionString(context, faceEntity, spannableString);
         }
 
@@ -38,7 +54,7 @@ public class FaceUtil {
      * @param spannableString
      * @return
      */
-    private static SpannableString getExpressionString(Context context, BaseFaceEntity faceEntity, SpannableString spannableString) {
+    private SpannableString getExpressionString(Context context, BaseFaceEntity faceEntity, SpannableString spannableString) {
         List<Integer> imageIds = faceEntity.getFaceImgIds();
         if (imageIds == null || imageIds.isEmpty()) {
             throw new IllegalArgumentException("faceImgIds can not is null");
@@ -70,7 +86,7 @@ public class FaceUtil {
      * @param pattern
      * @return SpannableString
      */
-    private static SpannableString dealExpression(Context context, List<String> list, List<Integer> imageIds,
+    private SpannableString dealExpression(Context context, List<String> list, List<Integer> imageIds,
                                            SpannableString spannableString, Pattern pattern) {
         Matcher matcher = pattern.matcher(spannableString);
         while (matcher.find()) {
