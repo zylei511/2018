@@ -1,9 +1,11 @@
-package com.example.zylei_library.uihelper;
+package com.example.zylei_library.uihelper.entity;
 
 
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.zylei_library.uihelper.BindingHelper;
 
 /**
  * 用于存放View和Fragment的相关数据

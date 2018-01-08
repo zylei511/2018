@@ -1,7 +1,6 @@
 package com.example.zylei_library.uihelper;
 
-import android.support.v4.app.Fragment;
-import android.view.View;
+import com.example.zylei_library.uihelper.entity.HelperEntity;
 
 /**
  * 模块的处理接口

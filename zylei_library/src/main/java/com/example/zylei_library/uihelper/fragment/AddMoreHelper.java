@@ -1,16 +1,12 @@
 package com.example.zylei_library.uihelper.fragment;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.zylei_library.R;
-import com.example.zylei_library.uihelper.ChatAddBean;
+import com.example.zylei_library.uihelper.entity.ChatAddBean;
 import com.example.zylei_library.uihelper.adapter.ChatAddGridAdapter;
 
 import java.util.ArrayList;
@@ -18,35 +14,52 @@ import java.util.List;
 
 
 public class AddMoreHelper implements AdapterView.OnItemClickListener {
-    private int[] icons = {R.drawable.icon_pictrue, R.drawable.icon_replay, R.drawable.icon_news,
-            R.drawable.icon_send_messege};
-    private int[] names = {R.string.text_pictrue, R.string.text_replay, R.string.text_news,
-            R.string.text_send_messege};
 
+    private OnAddMoreItemClickListener itemClickListener;
+    List<ChatAddBean> addBeanList = new ArrayList<>();
 
-    public AddMoreHelper() {
+    private AddMoreHelper() {
     }
 
-    public void init(Context context, GridView gridview) {
+    public static AddMoreHelper newInstance() {
+        return AddMoreHelperHolder.addMoreHelper;
+    }
+
+    static class AddMoreHelperHolder{
+        static AddMoreHelper addMoreHelper = new AddMoreHelper();
+    }
+
+    public AddMoreHelper addView(Context context, GridView gridview) {
         ChatAddGridAdapter addGridAdapter = new ChatAddGridAdapter(context,
-                getDatas(context), R.layout.item_chat_add_grid_layout);
+                getDatas(), R.layout.item_chat_add_grid_layout);
         gridview.setAdapter(addGridAdapter);
         gridview.setOnItemClickListener(this);
+        return this;
     }
 
-    private List<ChatAddBean> getDatas(Context context) {
-        List<ChatAddBean> list = new ArrayList<>();
-        for (int i = 0; i < icons.length; i++) {
-            ChatAddBean chatAddBean = new ChatAddBean();
-            chatAddBean.setIconName(context.getString(names[i]));
-            chatAddBean.setIconRes(icons[i]);
-            list.add(chatAddBean);
+    public AddMoreHelper setDatas(List<ChatAddBean> addBeanList){
+        this.addBeanList = addBeanList;
+        return this;
+    }
+
+    private List<ChatAddBean> getDatas() {
+        if (addBeanList == null){
+            throw new IllegalArgumentException("user must setDatas() before use addView(context,gridview)");
         }
-        return list;
+        return addBeanList;
+    }
+
+    public void setOnAddMoreItemClickListener(OnAddMoreItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        itemClickListener.onAddMoreItemClick(parent,view,position,id);
+    }
+
+    interface OnAddMoreItemClickListener{
+        void onAddMoreItemClick(AdapterView<?> parent, View view, int position, long id);
     }
 }

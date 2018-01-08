@@ -1,4 +1,4 @@
-package com.example.zylei_library.uihelper;
+package com.example.zylei_library.uihelper.entity;
 
 import java.io.Serializable;
 

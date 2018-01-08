@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.zylei_library.R;
-import com.example.zylei_library.uihelper.ChatAddBean;
+import com.example.zylei_library.uihelper.entity.ChatAddBean;
 
 import java.util.List;
 

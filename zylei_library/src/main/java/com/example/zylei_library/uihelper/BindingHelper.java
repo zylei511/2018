@@ -3,11 +3,12 @@ package com.example.zylei_library.uihelper;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.zylei_library.uihelper.entity.HelperEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
-import cn.dreamtobe.kpswitch.util.KeyboardUtil;
 
 /**
  * 模块管理的基类
@@ -27,20 +28,15 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
     private int inActiveResId;
     private ViewGroup parentLayout;
 
-    protected BindingHelper() {
+    private BindingHelper() {
     }
 
-    private static BindingHelper baseHelper;
-
     public static BindingHelper newInstance() {
-        if (baseHelper == null) {
-            synchronized (BindingHelper.class) {
-                if (baseHelper == null) {
-                    baseHelper = new BindingHelper();
-                }
-            }
-        }
-        return baseHelper;
+        return BindingHelperHolder.bindingHelper;
+    }
+
+    static class BindingHelperHolder{
+        static BindingHelper bindingHelper = new BindingHelper();
     }
 
     /**

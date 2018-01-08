@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 
 
 import com.example.zylei_library.R;
-import com.example.zylei_library.uihelper.MsgFaceModle;
+import com.example.zylei_library.uihelper.entity.MsgFaceModle;
 import com.example.zylei_library.uihelper.adapter.FacesAdapter;
 import com.example.zylei_library.uihelper.adapter.ViewPagerAdapter;
 import com.example.zylei_library.uihelper.entity.BaseFaceEntity;
@@ -27,7 +27,6 @@ import java.util.List;
  */
 
 public class FaceHelper implements ViewPager.OnPageChangeListener {
-    private static FaceHelper entityFactory;
     /**
      * 每页最大表情数
      */
@@ -54,16 +53,14 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
     private ViewPagerPoint pagerPoint;
     private OnFaceOprateListener onFaceOprateListener;
 
+    private FaceHelper(){}
 
     public static FaceHelper newInstance() {
-        if (entityFactory == null) {
-            synchronized (FaceHelper.class) {
-                if (entityFactory == null) {
-                    entityFactory = new FaceHelper();
-                }
-            }
-        }
-        return entityFactory;
+        return FaceHelperHolder.faceHelper;
+    }
+
+    static class FaceHelperHolder{
+        static FaceHelper faceHelper = new FaceHelper();
     }
 
 

@@ -2,6 +2,7 @@ package com.example.zylei_library.uihelper.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -24,8 +25,11 @@ import android.widget.RelativeLayout;
 
 import com.example.zylei_library.R;
 import com.example.zylei_library.uihelper.BindingHelper;
-import com.example.zylei_library.uihelper.entity.EmojiFaceEntity;
+import com.example.zylei_library.uihelper.entity.ChatAddBean;
 import com.example.zylei_library.uihelper.entity.QQFaceEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.dreamtobe.kpswitch.util.KeyboardUtil;
 import cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout;
@@ -36,7 +40,7 @@ import cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout;
  * @author ex-zhangyuelei001
  * @date 2017.12.26
  */
-public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener, FaceHelper.OnFaceOprateListener {
+public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener, FaceHelper.OnFaceOprateListener, AddMoreHelper.OnAddMoreItemClickListener {
     private EditText editText;
     private ImageButton sendBtn;
     private ImageButton addBtn;
@@ -49,6 +53,11 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     private KPSwitchPanelRelativeLayout panelLayout;
     private OnSendClickListener mOnSendClickListener;
     private OnAddMoreItemClickListener mOnAddMoreItemClickListener;
+
+    private int[] icons = {R.drawable.icon_pictrue, R.drawable.icon_replay, R.drawable.icon_news,
+            R.drawable.icon_send_messege};
+    private int[] names = {R.string.text_pictrue, R.string.text_replay, R.string.text_news,
+            R.string.text_send_messege};
 
     public InputFragment() {
     }
@@ -82,12 +91,27 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
      * 初始化添加按钮下的数据
      */
     private void initAddViewData() {
-        new AddMoreHelper().init(getActivity(), gridview);
+        AddMoreHelper.newInstance()
+                .setDatas(getAddBeanList())
+                .addView(getActivity(), gridview)
+                .setOnAddMoreItemClickListener(this);
         BindingHelper.newInstance()
                 .bindView(addBtn, addLayout, panelLayout)
                 .addStateResource(R.drawable.icon_add_btn_pressed,
                         R.drawable.icon_add_btn_unpressed)
                 .bind();
+    }
+
+    @NonNull
+    private List<ChatAddBean> getAddBeanList() {
+        List<ChatAddBean> list = new ArrayList<>();
+        for (int i = 0; i < icons.length; i++) {
+            ChatAddBean chatAddBean = new ChatAddBean();
+            chatAddBean.setIconName(getActivity().getString(names[i]));
+            chatAddBean.setIconRes(icons[i]);
+            list.add(chatAddBean);
+        }
+        return list;
     }
 
     /**
@@ -213,6 +237,11 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
             }
             editText.getText().delete(selection - 1, selection);
         }
+    }
+
+    @Override
+    public void onAddMoreItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //添加addMore布局下面的监听
     }
 
     /**
