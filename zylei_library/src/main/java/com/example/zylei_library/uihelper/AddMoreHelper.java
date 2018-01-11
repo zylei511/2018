@@ -1,4 +1,4 @@
-package com.example.zylei_library.uihelper.fragment;
+package com.example.zylei_library.uihelper;
 
 import android.content.Context;
 import android.view.View;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AddMoreHelper implements AdapterView.OnItemClickListener {
 
-    private OnAddMoreItemClickListener itemClickListener;
+    private OnMoreItemClickListener itemClickListener;
     List<ChatAddBean> addBeanList = new ArrayList<>();
 
     private AddMoreHelper() {
@@ -49,17 +49,17 @@ public class AddMoreHelper implements AdapterView.OnItemClickListener {
         return addBeanList;
     }
 
-    public void setOnAddMoreItemClickListener(OnAddMoreItemClickListener itemClickListener){
+    public void setOnAddMoreItemClickListener(OnMoreItemClickListener itemClickListener){
         this.itemClickListener = itemClickListener;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        itemClickListener.onAddMoreItemClick(parent,view,position,id);
+        itemClickListener.onMoreItemClick(parent,view,position,id);
     }
 
-    interface OnAddMoreItemClickListener{
-        void onAddMoreItemClick(AdapterView<?> parent, View view, int position, long id);
+    public interface OnMoreItemClickListener {
+        void onMoreItemClick(AdapterView<?> parent, View view, int position, long id);
     }
 }

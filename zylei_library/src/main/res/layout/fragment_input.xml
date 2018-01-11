@@ -9,42 +9,65 @@
         android:layout_height="wrap_content"
         android:background="#f5f7fa"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
-        <EditText
-            android:id="@+id/msg_et"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_audio"
+            android:layout_width="@dimen/height_40dp"
+            android:layout_height="@dimen/height_40dp"
+            android:layout_marginLeft="@dimen/margin_left_3dp"
+            android:background="@drawable/icon_audio"
+            android:text="语音" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/height_40dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
-            android:maxLines="5"
-            android:maxHeight="50dp"
-            android:maxEms="10"
             android:layout_marginTop="5dp"
-            android:textColor="@color/font_corlor_black"
-            android:hint="@string/txt_msg_hit"
-            android:layout_weight="100"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_left_3dp"
-            android:background="@drawable/login_bc"
-            android:inputType="textMultiLine"
-            android:paddingBottom="4.0dip"
-            android:paddingTop="4.0dip"
-            android:paddingStart="10dp"
-            android:textSize="@dimen/txt_15sp" />
+            android:layout_weight="100">
 
+            <EditText
+                android:id="@+id/msg_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/login_bc"
+                android:gravity="center_vertical"
+                android:hint="@string/txt_msg_hit"
+                android:inputType="textMultiLine"
+                android:maxEms="10"
+                android:maxHeight="50dp"
+                android:maxLines="5"
+                android:paddingBottom="4.0dip"
+                android:paddingLeft="@dimen/margin_left_3dp"
+                android:paddingStart="10dp"
+                android:paddingTop="4.0dip"
+                android:textColor="@color/font_corlor_black"
+                android:textSize="@dimen/txt_15sp" />
+
+            <Button
+                android:id="@+id/msg_audio_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/login_bc"
+                android:gravity="center"
+                android:text="@string/crm_sdk_txt_msg_record_audio"
+                android:textColor="@color/font_corlor_black"
+                android:textSize="@dimen/txt_15sp"
+                android:visibility="gone" />
+        </RelativeLayout>
 
         <ImageButton
             android:id="@+id/face_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/height_40dp"
+            android:layout_height="@dimen/height_40dp"
             android:layout_marginLeft="@dimen/margin_left_3dp"
             android:background="@drawable/btn_face_bc" />
 
         <FrameLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            >
+            android:layout_width="@dimen/height_40dp"
+            android:layout_height="@dimen/height_40dp">
+
             <ImageButton
                 android:id="@+id/send_btn"
                 android:layout_width="match_parent"
@@ -68,7 +91,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/color_line"/>
+        android:background="@color/color_line" />
 
     <cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout
         android:id="@+id/layout"
@@ -76,10 +99,10 @@
         android:layout_height="210dp"
         android:visibility="visible">
 
+        <include layout="@layout/fragment_right" />
 
-
-        <include layout="@layout/fragment_right"/>
         <include layout="@layout/fragment_left" />
+
     </cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout>
 
 </LinearLayout>

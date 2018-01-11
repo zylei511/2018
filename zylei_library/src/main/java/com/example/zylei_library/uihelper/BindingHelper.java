@@ -1,5 +1,7 @@
 package com.example.zylei_library.uihelper;
 
+import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,7 +10,9 @@ import com.example.zylei_library.uihelper.entity.HelperEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.dreamtobe.kpswitch.IPanelHeightTarget;
 import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
+import cn.dreamtobe.kpswitch.util.KeyboardUtil;
 
 /**
  * 模块管理的基类
@@ -22,11 +26,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
      * 储存HelperEntity
      */
     private static List<HelperEntity> helperEntities = new ArrayList<>();
-    private View bindView;
-    private ViewGroup bindLayout;
-    private int activeResId;
-    private int inActiveResId;
-    private ViewGroup parentLayout;
+    private ViewGroup panelLayout;
 
     private BindingHelper() {
     }
@@ -35,15 +35,15 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         return BindingHelperHolder.bindingHelper;
     }
 
-    static class BindingHelperHolder{
+    static class BindingHelperHolder {
         static BindingHelper bindingHelper = new BindingHelper();
     }
 
     /**
      * 重置、初始化View的状态
      */
-    public void reset(){
-        for (HelperEntity entity:helperEntities){
+    public void reset() {
+        for (HelperEntity entity : helperEntities) {
             //重置View的状态
             entity.setViewState(ViewState.STATE_INACTIVE);
             View view = entity.getBindView();
@@ -51,40 +51,52 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         }
     }
 
+    /**
+     * 绑定panelLayout
+     *
+     * @param panelLayout
+     * @return
+     */
+    public BindingHelper bindPanelLayout(Activity activity, ViewGroup panelLayout) {
+        this.panelLayout = panelLayout;
+        if (!(panelLayout instanceof IPanelHeightTarget)) {
+            throw new IllegalArgumentException("use bindPanelLayout must ensure " +
+                    "panelLayout be IPanelHeightTarget");
+        }
+        //保存keyboard的高度
+        KeyboardUtil.attach(activity, (IPanelHeightTarget) panelLayout);
+        return this;
+    }
 
     /**
      * 将View和layout绑定的在一起
+     *
      * @param bindView
      * @param bindLayout
+     * @param activeResId
+     * @param inActiveResId
      * @return
      */
-    public BindingHelper bindView(View bindView,ViewGroup bindLayout,ViewGroup parentLayout) {
-        this.bindView = bindView;
-        this.bindLayout = bindLayout;
-        this.parentLayout = parentLayout;
+    public BindingHelper bindView(View bindView, View bindLayout, int activeResId, int inActiveResId) {
+        bindView(bindView, bindLayout, activeResId, inActiveResId, false);
         return this;
     }
 
-    public BindingHelper addStateResource(int activeResId,int inActiveResId){
-        this.activeResId = activeResId;
-        this.inActiveResId = inActiveResId;
-        return this;
-    }
-
-
-    public void bind() {
-
+    public BindingHelper bindView(View bindView, View bindLayout, int activeResId, int inActiveResId, boolean isHide) {
         HelperEntity helperEntity = new HelperEntity();
         helperEntity.setBindView(bindView);
         helperEntity.setBindLayout(bindLayout);
         helperEntity.setViewState(ViewState.STATE_INACTIVE);
         helperEntity.setActiveStateId(activeResId);
         helperEntity.setInActiveStateId(inActiveResId);
-        helperEntity.setParentLayout(parentLayout);
-        helperEntities.add(helperEntity);
+        helperEntity.setAlone(isHide);
 
+        helperEntities.add(helperEntity);
         bindView.setOnClickListener(this);
+
+        return this;
     }
+
 
     /**
      * 接触View和Fragment的绑定
@@ -96,11 +108,16 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
 
     @Override
     public synchronized void active(HelperEntity entity) {
-        ViewGroup layout = entity.getBindLayout();
-        if (layout.getVisibility() != View.VISIBLE){
+        View layout = entity.getBindLayout();
+        if (layout.getVisibility() != View.VISIBLE) {
             layout.setVisibility(View.VISIBLE);
         }
-        KPSwitchConflictUtil.showPanel(entity.getParentLayout());
+
+        if (panelLayout != null && !entity.isAlone()) {
+            KPSwitchConflictUtil.showPanel(panelLayout);
+        } else {
+            KeyboardUtil.hideKeyboard(entity.getBindView());
+        }
 
         //重置View的状态
         entity.setViewState(ViewState.STATE_ACTIVE);
@@ -110,8 +127,8 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
 
     @Override
     public synchronized void inActive(HelperEntity entity) {
-        ViewGroup layout = entity.getBindLayout();
-        if (layout.getVisibility() == View.VISIBLE){
+        View layout = entity.getBindLayout();
+        if (layout.getVisibility() == View.VISIBLE) {
             layout.setVisibility(View.GONE);
         }
 
@@ -141,7 +158,9 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
                 inActive(entity);
                 continue;
             } else if (viewState == ViewState.STATE_INACTIVE && entity.getBindView() == view) {
-                visible = View.VISIBLE;
+                if (!entity.isAlone()){
+                    visible = View.VISIBLE;
+                }
                 active(entity);
             }
 
@@ -150,7 +169,9 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
             }
         }
         //由于parentLayout是公用的，统一设置它的状态
-        parentLayout.setVisibility(visible);
+        if (panelLayout != null) {
+            panelLayout.setVisibility(visible);
+        }
     }
 
     /**

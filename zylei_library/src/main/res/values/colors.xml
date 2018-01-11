@@ -11,4 +11,6 @@
 
     <color name="colorLoginEt">#aaaaaa</color>
     <color name="color_fefefe">#fafafa</color>
+
+    <color name="translucent">#aa000000</color>
 </resources>

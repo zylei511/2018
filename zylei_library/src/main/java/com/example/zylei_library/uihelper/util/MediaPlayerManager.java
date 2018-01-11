@@ -14,11 +14,16 @@ import java.io.IOException;
 
 public class MediaPlayerManager {
     private MediaPlayer mediaPlayer ;
-    private static MediaPlayerManager mediaUtil = new MediaPlayerManager();
     private boolean isPlaying;
 
+    private MediaPlayerManager(){}
+
     public static MediaPlayerManager newInstance(){
-        return mediaUtil;
+        return MediaPlayerManagerHolder.instance;
+    }
+
+    static class MediaPlayerManagerHolder{
+        static MediaPlayerManager instance = new MediaPlayerManager();
     }
 
     private synchronized MediaPlayer createMedia() {

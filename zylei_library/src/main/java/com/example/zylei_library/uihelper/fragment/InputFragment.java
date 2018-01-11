@@ -12,11 +12,13 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -24,9 +26,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.zylei_library.R;
+import com.example.zylei_library.uihelper.AddMoreHelper;
 import com.example.zylei_library.uihelper.BindingHelper;
+import com.example.zylei_library.uihelper.FaceHelper;
+import com.example.zylei_library.uihelper.RecordAudioView;
 import com.example.zylei_library.uihelper.entity.ChatAddBean;
 import com.example.zylei_library.uihelper.entity.QQFaceEntity;
+import com.example.zylei_library.uihelper.util.MediaPlayerManager;
+import com.example.zylei_library.uihelper.util.MediaRecorderManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +47,7 @@ import cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout;
  * @author ex-zhangyuelei001
  * @date 2017.12.26
  */
-public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener, FaceHelper.OnFaceOprateListener, AddMoreHelper.OnAddMoreItemClickListener {
+public class InputFragment extends Fragment implements TextWatcher, View.OnClickListener, View.OnTouchListener, FaceHelper.OnFaceOprateListener, AddMoreHelper.OnMoreItemClickListener, MediaRecorderManager.RecordListener {
     private EditText editText;
     private ImageButton sendBtn;
     private ImageButton addBtn;
@@ -51,13 +58,18 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     private LinearLayout pagerCursor;
     private GridView gridview;
     private KPSwitchPanelRelativeLayout panelLayout;
-    private OnSendClickListener mOnSendClickListener;
+    private OnSendListener mOnSendClickListener;
     private OnAddMoreItemClickListener mOnAddMoreItemClickListener;
+    private ImageButton audioView;
+    private Button msgAudioView;
 
     private int[] icons = {R.drawable.icon_pictrue, R.drawable.icon_replay, R.drawable.icon_news,
             R.drawable.icon_send_messege};
     private int[] names = {R.string.text_pictrue, R.string.text_replay, R.string.text_news,
             R.string.text_send_messege};
+    private MediaRecorderManager recorderUtil;
+    private float startY;
+
 
     public InputFragment() {
     }
@@ -65,8 +77,8 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnSendClickListener) {
-            mOnSendClickListener = (OnSendClickListener) context;
+        if (context instanceof OnSendListener) {
+            mOnSendClickListener = (OnSendListener) context;
         }
 
         if (context instanceof OnAddMoreItemClickListener) {
@@ -81,8 +93,19 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
         initViews(view);
         initFaceViewData();
         initAddViewData();
-        //保存keyboard的高度
-        KeyboardUtil.attach(getActivity(), panelLayout);
+
+        BindingHelper.newInstance()
+                .bindPanelLayout(getActivity(), panelLayout)
+                .bindView(faceBtn, faceLayout,
+                        R.drawable.icon_expression_pressed,
+                        R.drawable.icon_expression_unpressed)
+                .bindView(addBtn, addLayout,
+                        R.drawable.icon_add_btn_pressed,
+                        R.drawable.icon_add_btn_unpressed)
+                .bindView(audioView, msgAudioView,
+                        R.drawable.icon_keybroad,
+                        R.drawable.icon_audio,
+                        true);
 
         return view;
     }
@@ -95,11 +118,6 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
                 .setDatas(getAddBeanList())
                 .addView(getActivity(), gridview)
                 .setOnAddMoreItemClickListener(this);
-        BindingHelper.newInstance()
-                .bindView(addBtn, addLayout, panelLayout)
-                .addStateResource(R.drawable.icon_add_btn_pressed,
-                        R.drawable.icon_add_btn_unpressed)
-                .bind();
     }
 
     @NonNull
@@ -124,14 +142,7 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
                 .addViewPager(facePager)
                 .addViewPagerCursor(pagerCursor)
                 .setOnFaceOprateListener(this)
-                .create();
-
-        //绑定View和layout
-        BindingHelper.newInstance()
-                .bindView(faceBtn, faceLayout, panelLayout)
-                .addStateResource(R.drawable.icon_expression_pressed,
-                        R.drawable.icon_expression_unpressed)
-                .bind();
+                .init();
     }
 
     /**
@@ -153,7 +164,11 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
         facePager = (ViewPager) view.findViewById(R.id.viewpager);
         pagerCursor = (LinearLayout) view.findViewById(R.id.msg_face_index_view);
         gridview = (GridView) view.findViewById(R.id.chat_add_grid);
-        gridview.setOnItemClickListener(this);
+        audioView = (ImageButton) view.findViewById(R.id.btn_audio);
+        msgAudioView = (Button) view.findViewById(R.id.msg_audio_btn);
+        msgAudioView.setOnTouchListener(this);
+        recorderUtil = new MediaRecorderManager();
+        recorderUtil.setRecordListener(this);
 
     }
 
@@ -197,7 +212,7 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     public void onClick(View v) {
         String content = editText.getText().toString();
         if (mOnSendClickListener != null) {
-            mOnSendClickListener.onSend(content);
+            mOnSendClickListener.onSendBtnClick(content);
         }
     }
 
@@ -207,15 +222,31 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
                 && event.getAction() == MotionEvent.ACTION_UP) {
             //重置Panel
             BindingHelper.newInstance().reset();
+        } else if (v.getId() == R.id.msg_audio_btn) {
+            //点击录音按钮时，先关闭正在播放的语音
+            MediaPlayerManager.newInstance().stop();
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    //默认是发送语音
+                    recorderUtil.init(getActivity());
+                    recorderUtil.startRecorder();
+                    startY = event.getY();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    recorderUtil.stopRecorder();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    float endY = event.getY();
+                    Log.e("TAG", "end - start = " + (endY - startY));
+                    if (startY - endY > 50) {
+                        recorderUtil.cancelRecorder();
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         return false;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (mOnAddMoreItemClickListener != null) {
-            mOnAddMoreItemClickListener.onAddMoreItemClick(parent, view, position, id);
-        }
     }
 
     @Override
@@ -240,15 +271,64 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     }
 
     @Override
-    public void onAddMoreItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onMoreItemClick(AdapterView<?> parent, View view, int position, long id) {
         //添加addMore布局下面的监听
+        if (mOnAddMoreItemClickListener != null) {
+            mOnAddMoreItemClickListener.onAddMoreItemClick(parent, view, position, id);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BindingHelper.newInstance().unBindView();
+    }
+
+    @Override
+    public void onUpdate(double decible, float progress) {
+        Log.e("onUpdate", "正在录制 " + "时间：" + progress + " ; 分贝：" + decible);
+        RecordAudioView.newInstance()
+                .initDialog(getActivity())
+                .setRoundProgressBar(progress)
+                .setImageLevel((int) decible)
+                .show();
+    }
+
+    @Override
+    public void onFinished(String path, float recordTime) {
+        //用户取消发送语音
+        if (TextUtils.isEmpty(path) && recordTime == 0) {
+            RecordAudioView.newInstance().dismiss();
+            return;
+        }
+        //用户录音时间太短
+        if (recordTime < 1) {
+            RecordAudioView.newInstance()
+                    .initDialog(getActivity())
+                    .setTips(getString(R.string.crm_sdk_audio_too_short))
+                    .setImageResource(R.drawable.icon_audio_short_tips)
+                    .delayDismiss();
+            return;
+        }
+        RecordAudioView.newInstance().dismiss();
+        Log.e("onFinished", "录制结束 " + "时间：" + recordTime);
+
+    }
+
+    @Override
+    public boolean onCancel() {
+        RecordAudioView.newInstance()
+                .initDialog(getActivity())
+                .setTips(getString(R.string.crm_sdk_audio_left_cancel_send))
+                .setImageResource(R.drawable.icon_audio_cancel);
+        return false;
     }
 
     /**
      * 发送按钮的回调接口
      */
-    public interface OnSendClickListener {
-        void onSend(String content);
+    public interface OnSendListener {
+        void onSendBtnClick(String content);
     }
 
     public interface OnAddMoreItemClickListener {

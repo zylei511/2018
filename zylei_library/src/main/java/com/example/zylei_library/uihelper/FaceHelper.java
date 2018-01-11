@@ -1,4 +1,4 @@
-package com.example.zylei_library.uihelper.fragment;
+package com.example.zylei_library.uihelper;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -87,14 +87,16 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
      * 添加需要使用的表情类
      *
      * @param context
-     * @param tClass
+     * @param tClasses
      * @return
      */
-    public FaceHelper addFace(Context context, Class<? extends BaseFaceEntity> tClass) {
+    public FaceHelper addFace(Context context, Class<? extends BaseFaceEntity>... tClasses) {
         this.context = context;
         try {
-            BaseFaceEntity baseFaceEntity = tClass.newInstance();
-            faceEntities.add(baseFaceEntity);
+            for (Class<? extends BaseFaceEntity> tClass:tClasses ){
+                BaseFaceEntity baseFaceEntity = tClass.newInstance();
+                faceEntities.add(baseFaceEntity);
+            }
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -108,7 +110,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
         return this;
     }
 
-    public FaceHelper create() {
+    public FaceHelper init() {
         for (BaseFaceEntity faceEntity : faceEntities) {
             //初始化viewpager的数据
             initData(faceEntity);
@@ -300,7 +302,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
      * Created by ex-zhangyuelei001 on 2017/12/20.
      */
 
-    interface OnFaceOprateListener {
+    public interface OnFaceOprateListener {
         void onFaceSelected(SpannableString spanEmojiStr);
 
         void onFaceDeleted();

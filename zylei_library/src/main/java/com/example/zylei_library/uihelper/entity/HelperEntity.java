@@ -15,11 +15,11 @@ import com.example.zylei_library.uihelper.BindingHelper;
  */
 public class HelperEntity {
     private View bindView;
-    private ViewGroup bindLayout;
-    private ViewGroup parentLayout;
+    private View bindLayout;
     private int activeStateId;
     private int inActiveStateId;
     private BindingHelper.ViewState viewState;
+    private boolean isAlone = false;
 
     public View getBindView() {
         return bindView;
@@ -29,11 +29,11 @@ public class HelperEntity {
         this.bindView = bindView;
     }
 
-    public ViewGroup getBindLayout() {
+    public View getBindLayout() {
         return bindLayout;
     }
 
-    public void setBindLayout(ViewGroup bindLayout) {
+    public void setBindLayout(View bindLayout) {
         this.bindLayout = bindLayout;
     }
 
@@ -61,11 +61,11 @@ public class HelperEntity {
         this.viewState = viewState;
     }
 
-    public ViewGroup getParentLayout() {
-        return parentLayout;
+    public boolean isAlone() {
+        return isAlone;
     }
 
-    public void setParentLayout(ViewGroup parentLayout) {
-        this.parentLayout = parentLayout;
+    public void setAlone(boolean alone) {
+        isAlone = alone;
     }
 }

@@ -62,7 +62,7 @@ public class MainActivity extends FragmentActivity implements TextWatcher {
                 .addFace(this, QQFaceEntity.class)
                 .addViewPager(facePager)
                 .addViewPagerCursor(pagerCursor)
-                .create();
+                .init();
 
         BindingHelper.newInstance()
                 .bindView(faceBtn,faceLayout,layout)

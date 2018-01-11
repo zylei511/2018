@@ -23,6 +23,9 @@
     <dimen name="margin_right_30dp">30dp</dimen>
     <dimen name="margin_right_3dp">3dp</dimen>
     <dimen name="height_30dp">30dp</dimen>
+    <dimen name="height_40dp">40dp</dimen>
+    <dimen name="space_10dp">10dp</dimen>
+    <dimen name="space_30dp">30dp</dimen>
 
 
     <!--标题文字大小-->
@@ -46,6 +49,10 @@
     <dimen name="height_alert_button">48dp</dimen>
     <!--按钮文字大小-->
     <dimen name="textSize_alert_button">17sp</dimen>
+
     <!--圆角-->
     <dimen name="radius_alertview">15px</dimen>
+    <dimen name="radius_alertview_10dp">10dp</dimen>
+    <dimen name="radius_alertview_radius_width">2px</dimen>
+    <dimen name="default_stroke_width">2dp</dimen>
 </resources>
