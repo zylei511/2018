@@ -39,18 +39,10 @@ public class RecordAudioView {
             mVoice = (ImageView) mDialog.findViewById(R.id.image);
             mLabel = (TextView) mDialog.findViewById(R.id.text_tips);
             mRoundProgressBar = (RoundProgressBar) mDialog.findViewById(R.id.progress_bar);
+            mDialog.setCanceledOnTouchOutside(true);
         }
         mRoundProgressBar.setVisibility(View.VISIBLE);
         mVoice.setImageResource(R.drawable.crm_sdk_record_audio);
-//        mVoice.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                int height = mVoice.getHeight();
-//                ViewGroup.LayoutParams layoutParams = mRoundProgressBar.getLayoutParams();
-//                layoutParams.height = layoutParams.width = (int) (1.5 * height);
-//                mRoundProgressBar.setLayoutParams(layoutParams);
-//            }
-//        });
         setTips(context.getString(R.string.crm_sdk_audio_slide_cancel_send));
         return this;
     }

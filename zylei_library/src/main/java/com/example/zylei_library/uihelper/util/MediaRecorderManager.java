@@ -52,6 +52,7 @@ public class MediaRecorderManager {
 
     public static final String CRM_NET_AUDIO = "crm_net_audio";
     public static final String CRM_CUSTOMER_LIST = "crm_customer_list";
+    private RecordState recordState;
 
     public enum RecordType {
         //声音类型
@@ -138,6 +139,10 @@ public class MediaRecorderManager {
             return;
         }
 
+        if (getRecordState() == RecordState.RECORD_STATE_PLAYING){
+            return;
+        }
+
         try {
             //准备录制
             mMediaRecorder.prepare();
@@ -161,6 +166,7 @@ public class MediaRecorderManager {
         if (mediaRecorder == null) {
             return;
         }
+        setRecordState(RecordState.RECORD_STATE_PLAYING);
         //获取在前一次调用此方法之后录音中出现的最大振幅
         int ratio = mediaRecorder.getMaxAmplitude();
         double decible = ratio > 0 ? 20 * Math.log10(ratio) : 0;
@@ -191,6 +197,8 @@ public class MediaRecorderManager {
 //            mIsOutOfMaxTime = false;
 //            return;
 //        }
+        setRecordState(RecordState.RECORD_STATE_STOP);
+
         //取消录音时，执行
         if (mMediaRecorder == null ) {
             if (mRecordListener != null){
@@ -231,6 +239,7 @@ public class MediaRecorderManager {
         if (mMediaRecorder == null) {
             return;
         }
+        setRecordState(RecordState.RECORD_STATE_STOP);
         try {
             mMediaRecorder.stop();
         } catch (Exception e) {
@@ -272,6 +281,18 @@ public class MediaRecorderManager {
 
     private File getRecordFile() {
         return new File(mFilePath);
+    }
+
+    private void setRecordState(RecordState recordState){
+        this.recordState = recordState;
+    }
+
+    private RecordState getRecordState(){
+        return recordState;
+    }
+
+    public enum RecordState{
+        RECORD_STATE_PLAYING,RECORD_STATE_STOP
     }
 
 

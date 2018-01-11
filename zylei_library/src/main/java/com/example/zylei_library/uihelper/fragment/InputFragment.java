@@ -240,9 +240,14 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
                     Log.e("TAG", "end - start = " + (endY - startY));
                     if (startY - endY > 50) {
                         recorderUtil.cancelRecorder();
+                    } else if (endY - startY > 50){
+                        //默认是发送语音
+                        recorderUtil.init(getActivity());
+                        recorderUtil.startRecorder();
                     }
                     break;
                 default:
+                    recorderUtil.stopRecorder();
                     break;
             }
         }
