@@ -1,0 +1,18 @@
+<resources>
+    <dimen name="txt_15sp">15sp</dimen>
+
+    <dimen name="common_height_1">1dp</dimen>
+    <dimen name="common_height_3">3dp</dimen>
+    <dimen name="common_height_5">5dp</dimen>
+    <dimen name="common_height_10">10dp</dimen>
+    <dimen name="common_height_15">15dp</dimen>
+    <dimen name="common_height_40">40dp</dimen>
+
+    <dimen name="min_keyboard_height">80dp</dimen>
+
+    <dimen name="min_panel_height">220dp</dimen>
+    <dimen name="max_panel_height">380dp</dimen>
+
+
+
+</resources>

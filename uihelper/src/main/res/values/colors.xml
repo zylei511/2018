@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 公共字体颜色 -->
+    <color name="font_corlor_black">#4d4d4c</color>
+
+    <color name="color_line">#d7dbe5</color>
+
+    <color name="colorLoginEt">#aaaaaa</color>
+
+    <color name="translucent">#aa000000</color>
+</resources>

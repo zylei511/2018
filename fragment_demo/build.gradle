@@ -30,6 +30,7 @@ dependencies {
     })
     //    compile 'com.android.support:appcompat-v7:27.+'
     testCompile 'junit:junit:4.12'
-    compile project(':zylei_library')
+    compile project(':inputhelper')
 
+    compile project(path: ':uihelper')
 }

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">zylei_library</string>
+    <string name="txt_msg_hit">请输入文字</string>
+    <string name="text_pictrue">图库</string>
+    <string name="text_replay">回复</string>
+    <string name="text_news">资讯</string>
+
+    <string name="text_send_messege">发送消息</string>
+    <string name="crm_sdk_txt_msg_record_audio">按住说话</string>
+
+    <!--发送语音文案-->
+    <string name="crm_sdk_audio_left_cancel_send">松开手指，取消发送</string>
+    <string name="crm_sdk_audio_slide_cancel_send">手指上滑，取消发送</string>
+    <string name="crm_sdk_audio_too_short">说话时间太短</string>
+</resources>

@@ -49,7 +49,7 @@ public interface IPanelConflictLayout {
     /**
      * @param isIgnoreRecommendHeight Ignore guaranteeing the panel height equal to the keyboard
      *                                height.
-     * @attr ref cn.dreamtobe.kpswitch.R.styleable#KPSwitchPanelLayout_ignore_recommend_height
+     * @attr ref cn.dreamtobe.com.example.zylei_library.uihelper.kpswitch.R.styleable#KPSwitchPanelLayout_ignore_recommend_height
      * @see cn.dreamtobe.kpswitch.handler.KPSwitchPanelLayoutHandler#resetToRecommendPanelHeight(int)
      * @see cn.dreamtobe.kpswitch.util.KeyboardUtil#getValidPanelHeight(Context)
      */

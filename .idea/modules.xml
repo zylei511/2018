@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyLibrary.iml" filepath="$PROJECT_DIR$/MyLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/fragment_demo/fragment_demo.iml" filepath="$PROJECT_DIR$/fragment_demo/fragment_demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zylei_library/zylei_library.iml" filepath="$PROJECT_DIR$/zylei_library/zylei_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inputhelper/inputhelper.iml" filepath="$PROJECT_DIR$/inputhelper/inputhelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uihelper/uihelper.iml" filepath="$PROJECT_DIR$/uihelper/uihelper.iml" />
     </modules>
   </component>
 </project>

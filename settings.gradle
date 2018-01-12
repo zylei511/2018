@@ -1,1 +1,1 @@
-include ':zylei_library', ':library', ':fragment_demo'
+include ':uihelper', ':fragment_demo', ':inputhelper'

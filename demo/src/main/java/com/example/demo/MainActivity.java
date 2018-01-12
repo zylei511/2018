@@ -16,10 +16,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.example.zylei_library.uihelper.BindingHelper;
-import com.example.zylei_library.uihelper.entity.QQFaceEntity;
-import com.example.zylei_library.uihelper.fragment.AddMoreHelper;
-import com.example.zylei_library.uihelper.fragment.FaceHelper;
+import com.example.paic.uihelper.BindingHelper;
+import com.example.paic.uihelper.entity.QQFaceEntity;
+import com.example.paic.uihelper.fragment.AddMoreHelper;
+import com.example.paic.uihelper.fragment.FaceHelper;
 
 import cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil;
 import cn.dreamtobe.kpswitch.util.KeyboardUtil;

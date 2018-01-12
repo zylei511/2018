@@ -1,4 +1,4 @@
-<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout
+<cn.dreamtobe.com.example.zylei_library.uihelper.kpswitch.widget.KPSwitchRootLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:layout_height="1dp"
         android:background="@color/color_line" />
 
-    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout
+    <cn.dreamtobe.com.example.zylei_library.uihelper.kpswitch.widget.KPSwitchPanelRelativeLayout
         android:id="@+id/panel_root"
         android:layout_width="match_parent"
         android:layout_height="210dp"
@@ -26,6 +26,6 @@
         <include layout="@layout/fragment_right"/>
         <include layout="@layout/fragment_left"/>
 
-    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout>
+    </cn.dreamtobe.com.example.zylei_library.uihelper.kpswitch.widget.KPSwitchPanelRelativeLayout>
 
-</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>
+</cn.dreamtobe.com.example.zylei_library.uihelper.kpswitch.widget.KPSwitchRootLinearLayout>
