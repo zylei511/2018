@@ -30,6 +30,7 @@ import com.paic.crm.inputhelper.BindingHelper;
 import com.paic.crm.inputhelper.FaceHelper;
 import com.paic.crm.inputhelper.R;
 import com.paic.crm.inputhelper.RecordAudioView;
+import com.paic.crm.inputhelper.entity.BaseFaceEntity;
 import com.paic.crm.inputhelper.entity.ChatAddBean;
 import com.paic.crm.inputhelper.entity.QQFaceEntity;
 import com.paic.crm.inputhelper.kpswitch.widget.KPSwitchPanelRelativeLayout;
@@ -37,6 +38,7 @@ import com.paic.crm.inputhelper.util.MediaPlayerManager;
 import com.paic.crm.inputhelper.util.MediaRecorderManager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -62,13 +64,25 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     private OnRecordFinishCallback onRecordFinishCallback;
     private ImageButton audioView;
     private Button msgAudioView;
+    private final static String HAS_AUDIO = "has_audio";
+    private final static String ADD_MORE_NAME = "add_more_name";
+    private final static String ADD_MORE_REID = "add_more_reid";
+    private final static String FACE_CLASS = "face_class";
 
-    private int[] icons = {R.drawable.icon_pictrue, R.drawable.icon_replay, R.drawable.icon_news,
-            R.drawable.icon_send_messege};
-    private int[] names = {R.string.text_pictrue, R.string.text_replay, R.string.text_news,
-            R.string.text_send_messege};
+    private boolean hasAudio;
+    private boolean hasFace;
+    private boolean hasAddMore;
+
+    private ArrayList<Integer> addMoreIcons = new ArrayList<>();
+    //            {R.drawable.icon_pictrue, R.drawable.icon_replay, R.drawable.icon_news,
+//            R.drawable.icon_send_messege};
+    private ArrayList<String> AddMorenames = new ArrayList<>();
+    //        {R.string.text_pictrue, R.string.text_replay, R.string.text_news,
+//            R.string.text_send_messege};
     private MediaRecorderManager recorderUtil;
     private float startY;
+    private ArrayList<Class<BaseFaceEntity>> faceNames = new ArrayList<>();
+    private Class<BaseFaceEntity> faceName;
 
     public InputFragment() {
     }
@@ -93,24 +107,53 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_input, container, false);
+        getData();
         initViews(view);
         initFaceViewData();
         initAddViewData();
-
-        BindingHelper.newInstance()
-                .bindPanelLayout(getActivity(), panelLayout)
-                .bindView(faceBtn, faceLayout,
-                        R.drawable.icon_expression_pressed,
-                        R.drawable.icon_expression_unpressed)
-                .bindView(addBtn, addLayout,
-                        R.drawable.icon_add_btn_pressed,
-                        R.drawable.icon_add_btn_unpressed)
-                .bindView(audioView, msgAudioView,
-                        R.drawable.icon_keybroad,
-                        R.drawable.icon_audio,
-                        true);
+        bindView();
 
         return view;
+    }
+
+    private void bindView() {
+        BindingHelper.newInstance()
+                .bindPanelLayout(getActivity(), panelLayout);
+
+        if (hasAudio) {
+            BindingHelper.newInstance()
+                    .bindView(audioView, msgAudioView,
+                            R.drawable.icon_keybroad,
+                            R.drawable.icon_audio,
+                            true);
+        }
+
+        if (hasFace) {
+            BindingHelper.newInstance()
+                    .bindView(faceBtn, faceLayout,
+                            R.drawable.icon_expression_pressed,
+                            R.drawable.icon_expression_unpressed);
+        }
+        if (hasAddMore) {
+            BindingHelper.newInstance()
+                    .bindView(addBtn, addLayout,
+                            R.drawable.icon_add_btn_pressed,
+                            R.drawable.icon_add_btn_unpressed);
+        }
+    }
+
+    /**
+     * 获取数据
+     */
+    private void getData() {
+        Bundle bundle = getArguments();
+        hasAudio = bundle.getBoolean(HAS_AUDIO);
+        AddMorenames.addAll(bundle.getStringArrayList(ADD_MORE_NAME));
+        addMoreIcons.addAll(bundle.getIntegerArrayList(ADD_MORE_REID));
+        hasAddMore = !(AddMorenames.isEmpty() || AddMorenames.isEmpty());
+        faceName = (Class<BaseFaceEntity>) bundle.getSerializable(FACE_CLASS);
+        faceNames.add((Class<BaseFaceEntity>) bundle.getSerializable(FACE_CLASS));
+        hasFace = !faceNames.isEmpty();
     }
 
     /**
@@ -126,10 +169,10 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     @NonNull
     private List<ChatAddBean> getAddBeanList() {
         List<ChatAddBean> list = new ArrayList<>();
-        for (int i = 0; i < icons.length; i++) {
+        for (int i = 0; i < addMoreIcons.size(); i++) {
             ChatAddBean chatAddBean = new ChatAddBean();
-            chatAddBean.setIconName(getActivity().getString(names[i]));
-            chatAddBean.setIconRes(icons[i]);
+            chatAddBean.setIconName(AddMorenames.get(i));
+            chatAddBean.setIconRes(addMoreIcons.get(i));
             list.add(chatAddBean);
         }
         return list;
@@ -141,7 +184,8 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     private void initFaceViewData() {
         //填充表情数据
         FaceHelper.newInstance()
-                .addFace(getActivity(), QQFaceEntity.class)
+//                .addFace(getActivity(), QQFaceEntity.class)
+                .addFace(getActivity(), faceName)
                 .addViewPager(facePager)
                 .addViewPagerCursor(pagerCursor)
                 .setOnFaceOprateListener(this)
@@ -172,13 +216,25 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
         msgAudioView.setOnTouchListener(this);
         recorderUtil = new MediaRecorderManager();
         recorderUtil.setRecordListener(this);
-
+        //判断语音、表情、更多模块是否显示
+        audioView.setVisibility(hasAudio ? View.VISIBLE : View.GONE);
+        faceBtn.setVisibility(hasFace ? View.VISIBLE : View.GONE);
+        addBtn.setVisibility(hasAddMore ? View.VISIBLE : View.GONE);
+        sendBtn.setVisibility(!hasFace && !hasAddMore ? View.VISIBLE : View.GONE);
     }
 
     /**
      * 展示输入框
      */
-    public void showBottom(Context context, int layoutId) {
+    public void showBottom(Context context, int layoutId, boolean hasAudio,
+                           ArrayList<String> addMoreNames, ArrayList<Integer> addMoreRes,
+                           Class<? extends BaseFaceEntity> faceClasses) {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(HAS_AUDIO, hasAudio);
+        bundle.putStringArrayList(ADD_MORE_NAME, addMoreNames);
+        bundle.putIntegerArrayList(ADD_MORE_REID, addMoreRes);
+        bundle.putSerializable(FACE_CLASS, faceClasses);
+        setArguments(bundle);
         FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(layoutId, this);
@@ -215,6 +271,7 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
     public void onClick(View v) {
         String content = editText.getText().toString();
         if (onSendCallback != null) {
+            editText.setText("");
             onSendCallback.onSendBtnClick(content);
         }
     }
@@ -243,7 +300,7 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
                     Log.e("TAG", "end - start = " + (endY - startY));
                     if (startY - endY > 50) {
                         recorderUtil.cancelRecorder();
-                    } else if (endY - startY > 50){
+                    } else if (endY - startY > 50) {
                         //默认是发送语音
                         recorderUtil.init(getActivity());
                         recorderUtil.startRecorder();
@@ -320,7 +377,7 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
         }
         RecordAudioView.newInstance().dismiss();
         Log.e("onFinished", "录制结束 " + "时间：" + recordTime);
-        if (onRecordFinishCallback != null){
+        if (onRecordFinishCallback != null) {
             onRecordFinishCallback.onRecordFinish(path);
         }
 

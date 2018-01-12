@@ -1,6 +1,8 @@
 package com.paic.crm.inputhelper.entity;
 
 
+import android.os.Parcel;
+
 import com.paic.crm.inputhelper.R;
 
 import java.util.ArrayList;
@@ -127,5 +129,4 @@ public class EmojiFaceEntity extends BaseFaceEntity {
     public Pattern getSymbolPattern() {
         return null;
     }
-
 }

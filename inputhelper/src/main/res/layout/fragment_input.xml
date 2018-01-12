@@ -24,6 +24,7 @@
             android:layout_height="@dimen/common_height_40"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_weight="100">
 
@@ -61,7 +62,6 @@
             android:id="@+id/face_btn"
             android:layout_width="@dimen/common_height_40"
             android:layout_height="@dimen/common_height_40"
-            android:layout_marginLeft="@dimen/common_height_3"
             android:background="@drawable/btn_face_bc" />
 
         <FrameLayout
@@ -75,7 +75,6 @@
                 android:layout_gravity="center"
                 android:background="@drawable/chat_bottombar_btn_selector"
                 android:gravity="center"
-                android:minHeight="0dp"
                 android:visibility="invisible" />
             <!-- 附件 -->
 

@@ -3,8 +3,10 @@ package com.paic.crm.inputhelper.entity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Parcelable;
 import android.util.SparseArray;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Pattern;
 
