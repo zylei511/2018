@@ -1,1 +1,1 @@
-include ':uihelper', ':fragment_demo', ':inputhelper'
+include ':fragment_demo', ':inputhelper'
