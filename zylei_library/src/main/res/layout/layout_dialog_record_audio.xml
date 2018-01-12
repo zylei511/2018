@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:padding="@dimen/space_10dp"
+        android:padding="@dimen/common_height_10"
         android:layout_gravity="center_horizontal">
 
         <com.example.zylei_library.uihelper.RoundProgressBar
@@ -35,8 +35,8 @@
         android:id="@+id/text_tips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_15dp"
-        android:layout_marginBottom="@dimen/margin_bottom_10dp"
+        android:layout_marginTop="@dimen/common_height_15"
+        android:layout_marginBottom="@dimen/common_height_10"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/txt_15sp"

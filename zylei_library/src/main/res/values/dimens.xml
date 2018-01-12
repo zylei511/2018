@@ -1,58 +1,11 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="txt_17sp">17sp</dimen>
     <dimen name="txt_15sp">15sp</dimen>
-    <dimen name="txt_13sp">13sp</dimen>
-    <dimen name="margin_top_10dp">10dp</dimen>
-    <dimen name="margin_bottom_10dp">10dp</dimen>
-    <dimen name="margin_top_15dp">15dp</dimen>
-    <dimen name="margin_bottom_15dp">15dp</dimen>
-    <dimen name="margin_left_10dp">10dp</dimen>
-    <dimen name="margin_left_20dp">20dp</dimen>
-    <dimen name="margin_left_3dp">3dp</dimen>
-    <dimen name="scrollbar_3dp">3dp</dimen>
-    <dimen name="margin_top_3dp">3dp</dimen>
-    <dimen name="margin_top_5dp">5dp</dimen>
-    <dimen name="margin_right_5dp">5dp</dimen>
-    <dimen name="padding_5dp">5dp</dimen>
-    <dimen name="margin_right_10dp">10dp</dimen>
-    <dimen name="margin_right_15dp">15dp</dimen>
-    <dimen name="padding_20dp">20dp</dimen>
-    <dimen name="margin_right_30dp">30dp</dimen>
-    <dimen name="margin_right_3dp">3dp</dimen>
-    <dimen name="height_30dp">30dp</dimen>
-    <dimen name="height_40dp">40dp</dimen>
-    <dimen name="space_10dp">10dp</dimen>
-    <dimen name="space_30dp">30dp</dimen>
 
+    <dimen name="common_height_1">1dp</dimen>
+    <dimen name="common_height_3">3dp</dimen>
+    <dimen name="common_height_5">5dp</dimen>
+    <dimen name="common_height_10">10dp</dimen>
+    <dimen name="common_height_15">15dp</dimen>
+    <dimen name="common_height_40">40dp</dimen>
 
-    <!--标题文字大小-->
-    <dimen name="textSize_alert_title">22sp</dimen>
-    <dimen name="textSize_actionsheet_title">14sp</dimen>
-    <!--标题文字高度-->
-    <dimen name="height_alert_title">60dp</dimen>
-    <dimen name="height_actionsheet_title">50dp</dimen>
-    <!--消息文字大小-->
-    <dimen name="textSize_alert_msg">15sp</dimen>
-    <dimen name="textSize_actionsheet_msg">14sp</dimen>
-    <!--消息距离底部间距-->
-    <dimen name="marginBottom_alert_msg">25dp</dimen>
-    <dimen name="marginBottom_actionsheet_msg">14dp</dimen>
-    <!--窗口模式左右两边到屏幕的间距-->
-    <dimen name="margin_alert_left_right">40dp</dimen>
-    <dimen name="margin_actionsheet_left_right">10dp</dimen>
-    <!--线条粗细-->
-    <dimen name="size_divier">1dp</dimen>
-    <!--按钮的高度-->
-    <dimen name="height_alert_button">48dp</dimen>
-    <!--按钮文字大小-->
-    <dimen name="textSize_alert_button">17sp</dimen>
-
-    <!--圆角-->
-    <dimen name="radius_alertview">15px</dimen>
-    <dimen name="radius_alertview_10dp">10dp</dimen>
-    <dimen name="radius_alertview_radius_width">2px</dimen>
-    <dimen name="default_stroke_width">2dp</dimen>
 </resources>

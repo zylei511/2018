@@ -21,7 +21,7 @@
         android:hint="@string/txt_msg_hit"
         android:layout_weight="100"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/margin_left_3dp"
+        android:paddingLeft="@dimen/common_height_3"
         android:background="@drawable/login_bc"
         android:inputType="textMultiLine"
         android:paddingBottom="4.0dip"
@@ -34,7 +34,7 @@
         android:id="@+id/face_btn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="@dimen/margin_left_3dp"
+        android:layout_marginLeft="@dimen/common_height_3"
         android:background="@drawable/btn_face_bc" />
 
     <FrameLayout

@@ -225,7 +225,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
         GridView initView() {
             FacesAdapter facesAdapter = new FacesAdapter(itemContext, list);
             GridView gridView = new GridView(itemContext);
-            int commonSpacing = (int) itemContext.getResources().getDimension(R.dimen.padding_5dp);
+            int commonSpacing = (int) itemContext.getResources().getDimension(R.dimen.common_height_5);
             gridView.setHorizontalSpacing(commonSpacing);
             gridView.setVerticalSpacing(commonSpacing);
             gridView.setNumColumns(6);
