@@ -1,30 +1,33 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '27.0.0'
+    compileSdkVersion 24
+    buildToolsVersion '24.0.0'
     defaultConfig {
-        applicationId "com.example.ex_zhangyuelei001.mylibrary"
-        minSdkVersion 17
-        targetSdkVersion 27
+        applicationId "com.example.fragment_demo"
+        minSdkVersion 15
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
-    //    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':zylei_library')
-    //    compile files('libs/commons-codec-1.10.jar')
-    compile 'com.android.support:support-v4:25.3.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile project(path: ':inputhelper')
 }
