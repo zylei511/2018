@@ -88,7 +88,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
      * @param tClasses
      * @return
      */
-    public FaceHelper addFace(Context context, Class<? extends BaseFaceEntity>... tClasses) {
+    public FaceHelper addFace(Context context, ArrayList<Class<?extends BaseFaceEntity>> tClasses) {
         this.context = context;
         try {
             for (Class<? extends BaseFaceEntity> tClass:tClasses ){
