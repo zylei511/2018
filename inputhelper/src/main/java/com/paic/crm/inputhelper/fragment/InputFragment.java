@@ -32,6 +32,7 @@ import com.paic.crm.inputhelper.R;
 import com.paic.crm.inputhelper.RecordAudioView;
 import com.paic.crm.inputhelper.entity.BaseFaceEntity;
 import com.paic.crm.inputhelper.entity.ChatAddBean;
+import com.paic.crm.inputhelper.kpswitch.util.KeyboardUtil;
 import com.paic.crm.inputhelper.kpswitch.widget.KPSwitchPanelRelativeLayout;
 import com.paic.crm.inputhelper.util.MediaPlayerManager;
 import com.paic.crm.inputhelper.util.MediaRecorderManager;
@@ -281,7 +282,15 @@ public class InputFragment extends Fragment implements TextWatcher, View.OnClick
 
     @Override
     public void onClick(View v) {
-        String content = editText.getText().toString();
+        if (v == sendBtn){
+            String content = editText.getText().toString();
+            sendMsg(content);
+            KeyboardUtil.hideKeyboard(v);
+        }
+
+    }
+
+    private void sendMsg(String content) {
         if (onSendCallback != null) {
             editText.setText("");
             onSendCallback.onSendBtnClick(content);

@@ -96,7 +96,7 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <include layout="@layout/fragment_right" />
 
