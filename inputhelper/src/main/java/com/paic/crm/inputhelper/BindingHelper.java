@@ -30,7 +30,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
     private BindingHelper() {
     }
 
-    public static BindingHelper newInstance() {
+    public static BindingHelper getInstance() {
         return BindingHelperHolder.bindingHelper;
     }
 
@@ -44,9 +44,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
     public void reset() {
         for (HelperEntity entity : helperEntities) {
             //重置View的状态
-            entity.setViewState(ViewState.STATE_INACTIVE);
-            View view = entity.getBindView();
-            view.setBackgroundResource(entity.getInActiveStateId());
+            inActive(entity);
         }
     }
 
@@ -60,7 +58,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
         this.panelLayout = panelLayout;
         if (!(panelLayout instanceof IPanelHeightTarget)) {
             throw new IllegalArgumentException("use bindPanelLayout must ensure " +
-                    "panelLayout be IPanelHeightTarget");
+                    "panelLayout be IPanelHeightTarget, see KPSwitchPanelFrameLayout or KPSwitchFSPanelFrameLayout");
         }
         //保存keyboard的高度
         KeyboardUtil.attach(activity, (IPanelHeightTarget) panelLayout);
@@ -82,6 +80,7 @@ public class BindingHelper implements ViewActivable, View.OnClickListener {
     }
 
     public BindingHelper bindView(View bindView, View bindLayout, int activeResId, int inActiveResId, boolean isHide) {
+
         HelperEntity helperEntity = new HelperEntity();
         helperEntity.setBindView(bindView);
         helperEntity.setBindLayout(bindLayout);

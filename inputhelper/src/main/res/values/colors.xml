@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <drawable name="transparent_background">#00000000</drawable>
     <!-- 公共字体颜色 -->
     <color name="font_corlor_black">#4d4d4c</color>
 
@@ -9,4 +9,10 @@
     <color name="colorLoginEt">#aaaaaa</color>
 
     <color name="translucent">#aa000000</color>
+    <color name="transparent_background">#00000000</color>
+
+    <color name="crm_sdk_time_axis">#cecece</color>
+    <color name="crm_sdk_phone_contact_item_bg">#f8f8f8</color>
+    <color name="crm_sdk_msg_send_button_down">#ababab</color>
+    <color name="crm_sdk_white">#FFFFFF</color>
 </resources>

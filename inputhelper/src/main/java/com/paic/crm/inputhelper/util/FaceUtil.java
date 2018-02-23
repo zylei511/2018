@@ -2,12 +2,14 @@ package com.paic.crm.inputhelper.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
 import com.paic.crm.inputhelper.entity.BaseFaceEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,17 +32,18 @@ public class FaceUtil {
         static FaceUtil instance = new FaceUtil();
     }
 
-    private List<BaseFaceEntity> faceEntities;
+    private List<BaseFaceEntity> faceEntities = new ArrayList<>();
 
     public List<BaseFaceEntity> getFaceEntities() {
         return faceEntities;
     }
 
-    public void setFaceEntities(List<BaseFaceEntity> faceEntities) {
-        this.faceEntities = faceEntities;
+    public void setFaceEntities(@NonNull List<BaseFaceEntity> faceEntities) {
+        this.faceEntities.addAll(faceEntities);
     }
 
-    public SpannableString getExpression(Context context, SpannableString spannableString) {
+    public SpannableString getExpression(Context context, String str) {
+        SpannableString spannableString = new SpannableString(str);
         SpannableString span = null;
         for (BaseFaceEntity faceEntity : getFaceEntities()) {
             span = getExpressionString(context, faceEntity, spannableString);

@@ -25,7 +25,7 @@ public class RecordAudioView {
         private static RecordAudioView instance = new RecordAudioView();
     }
 
-    public static RecordAudioView newInstance(){
+    public static RecordAudioView getInstance(){
 
         return RecordAudioViewHolder.instance;
     }

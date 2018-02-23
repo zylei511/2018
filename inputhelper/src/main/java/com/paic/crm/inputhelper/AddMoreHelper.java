@@ -20,7 +20,7 @@ public class AddMoreHelper implements AdapterView.OnItemClickListener {
     private AddMoreHelper() {
     }
 
-    public static AddMoreHelper newInstance() {
+    public static AddMoreHelper getInstance() {
         return AddMoreHelperHolder.addMoreHelper;
     }
 
@@ -34,6 +34,11 @@ public class AddMoreHelper implements AdapterView.OnItemClickListener {
         gridview.setAdapter(addGridAdapter);
         gridview.setOnItemClickListener(this);
         return this;
+    }
+
+    public void clearData(){
+        getDatas().clear();
+        itemClickListener = null;
     }
 
     public AddMoreHelper setDatas(List<ChatAddBean> addBeanList){

@@ -1,8 +1,6 @@
 package com.paic.crm.inputhelper.entity;
 
 
-import android.os.Parcel;
-
 import com.paic.crm.inputhelper.R;
 
 import java.util.ArrayList;

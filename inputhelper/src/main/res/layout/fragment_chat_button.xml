@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/crm_sdk_keyboard_drawable">
+
+    <TextView
+        android:id="@+id/ll_session_disable_txt_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/disable_session_txt"
+        android:textColor="@color/crm_sdk_msg_send_button_down"
+        android:textSize="@dimen/txt_13sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_cancle_and_continue"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_height_40"
+        android:layout_below="@id/ll_session_disable_txt_note"
+        android:layout_margin="@dimen/common_height_10"
+        android:background="@drawable/crm_sdk_btn_login_seleter"
+        android:gravity="center"
+        android:text="@string/crm_sdk_txt_exit"
+        android:textColor="@color/crm_sdk_white"
+        android:textSize="@dimen/txt_17sp"/>
+</RelativeLayout>

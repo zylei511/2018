@@ -53,7 +53,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
 
     private FaceHelper(){}
 
-    public static FaceHelper newInstance() {
+    public static FaceHelper getInstance() {
         return FaceHelperHolder.faceHelper;
     }
 
@@ -61,6 +61,12 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
         static FaceHelper faceHelper = new FaceHelper();
     }
 
+    public void clearData(){
+        modleList.clear();
+        viewList.clear();
+        getFaceEntities().clear();
+        onFaceOprateListener = null;
+    }
 
     /**
      * 添加ViewPager
@@ -226,6 +232,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
             int commonSpacing = (int) itemContext.getResources().getDimension(R.dimen.common_height_5);
             gridView.setHorizontalSpacing(commonSpacing);
             gridView.setVerticalSpacing(commonSpacing);
+            gridView.setSelector(R.drawable.transparent_background);
             gridView.setNumColumns(6);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -246,7 +253,7 @@ public class FaceHelper implements ViewPager.OnPageChangeListener {
                 onFaceOprateListener.onFaceDeleted();
             } else {
                 MsgFaceModle faceModle = list.get(position);
-                SpannableString span = FaceUtil.getInstance().getExpression(context, new SpannableString(faceModle.getCharacter()));
+                SpannableString span = FaceUtil.getInstance().getExpression(context, faceModle.getCharacter());
                 onFaceOprateListener.onFaceSelected(span);
             }
         }

@@ -12,4 +12,7 @@
     <string name="crm_sdk_audio_left_cancel_send">松开手指，取消发送</string>
     <string name="crm_sdk_audio_slide_cancel_send">手指上滑，取消发送</string>
     <string name="crm_sdk_audio_too_short">说话时间太短</string>
+
+    <string name="disable_session_txt">正在帮您联通专家，请稍后...</string>
+    <string name="crm_sdk_txt_exit">继续沟通</string>
 </resources>

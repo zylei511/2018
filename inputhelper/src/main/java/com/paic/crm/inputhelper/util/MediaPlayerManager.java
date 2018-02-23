@@ -18,7 +18,7 @@ public class MediaPlayerManager {
 
     private MediaPlayerManager(){}
 
-    public static MediaPlayerManager newInstance(){
+    public static MediaPlayerManager getInstance(){
         return MediaPlayerManagerHolder.instance;
     }
 

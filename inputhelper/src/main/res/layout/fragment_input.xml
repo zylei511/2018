@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_chatmain_input"
@@ -17,7 +17,7 @@
             android:layout_height="@dimen/common_height_40"
             android:layout_marginLeft="@dimen/common_height_3"
             android:background="@drawable/icon_audio"
-            android:text="语音" />
+            android:text="语音"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:paddingStart="10dp"
                 android:paddingTop="4.0dip"
                 android:textColor="@color/font_corlor_black"
-                android:textSize="@dimen/txt_15sp" />
+                android:textSize="@dimen/txt_15sp"/>
 
             <Button
                 android:id="@+id/msg_audio_btn"
@@ -55,18 +55,25 @@
                 android:text="@string/crm_sdk_txt_msg_record_audio"
                 android:textColor="@color/font_corlor_black"
                 android:textSize="@dimen/txt_15sp"
-                android:visibility="gone" />
+                android:visibility="gone"/>
         </RelativeLayout>
-
-        <ImageButton
-            android:id="@+id/face_btn"
-            android:layout_width="@dimen/common_height_40"
-            android:layout_height="@dimen/common_height_40"
-            android:background="@drawable/btn_face_bc" />
 
         <FrameLayout
             android:layout_width="@dimen/common_height_40"
-            android:layout_height="@dimen/common_height_40">
+            android:layout_height="@dimen/common_height_40"
+            android:padding="3dp">
+
+            <ImageButton
+                android:id="@+id/face_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_face_bc"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="@dimen/common_height_40"
+            android:layout_height="@dimen/common_height_40"
+            android:padding="3dp">
 
             <ImageButton
                 android:id="@+id/send_btn"
@@ -75,14 +82,14 @@
                 android:layout_gravity="center"
                 android:background="@drawable/chat_bottombar_btn_selector"
                 android:gravity="center"
-                android:visibility="invisible" />
+                android:visibility="gone"/>
             <!-- 附件 -->
 
             <ImageButton
                 android:id="@+id/btn_chat_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_add_bc" />
+                android:background="@drawable/btn_add_bc"/>
         </FrameLayout>
 
     </LinearLayout>
@@ -90,7 +97,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/color_line" />
+        android:background="@color/color_line"/>
 
     <com.paic.crm.inputhelper.kpswitch.widget.KPSwitchPanelRelativeLayout
         android:id="@+id/layout"
@@ -98,9 +105,9 @@
         android:layout_height="210dp"
         android:visibility="gone">
 
-        <include layout="@layout/fragment_right" />
+        <include layout="@layout/fragment_right"/>
 
-        <include layout="@layout/fragment_left" />
+        <include layout="@layout/fragment_left"/>
 
     </com.paic.crm.inputhelper.kpswitch.widget.KPSwitchPanelRelativeLayout>
 
